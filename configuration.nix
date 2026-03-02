@@ -33,6 +33,7 @@
     ./root/zfs.nix
     ./root/zram.nix
     ./root/lact.nix
+    ./root/ssh.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
