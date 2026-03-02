@@ -1,0 +1,26 @@
+(defwidget bar-layout []
+  (centerbox :class "bar-main-container"
+    ;; 左側：Logo + 工作區
+    (box :halign "start" :spacing 10 :space-evenly false
+         (box :class "logo-pill" "  ")
+         (workspaces-module))
+
+    ;; 中間：時間膠囊
+    (box :halign "center"
+         (clock-module)) ;; 這裡呼叫 widgets/clock.yuck 裡的組件
+
+    ;; 右側：系統狀態
+    (box :halign "end" :spacing 10 :space-evenly false
+         (box :class "sys-pill" 
+              (label :text "   ${round(EWW_CPU.avg, 0)}%"))
+         (box :class "sys-pill" 
+              (label :text "   80%")))
+  )
+)
+
+;; 簡單的工作區顯示 (抄自簡單版 dotfiles)
+(defwidget workspaces-module []
+  (box :class "ws-pill" :spacing 5
+    (for i in "[1, 2, 3, 4]"
+      (button :onclick "hyprctl dispatch workspace ${i}" "${i}"))))
+

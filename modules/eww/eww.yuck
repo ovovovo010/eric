@@ -1,0 +1,20 @@
+;; 核心：引入所有組件檔案 (這是你漏掉的關鍵)
+(include "./widgets/bar.yuck")
+(include "./widgets/clock.yuck")
+
+;; 定義監聽器 (抄自 Hyprland 高階配置)
+;; 監聽工作區需要 socat 和 jq，記得在 Nix 裝這兩個套件
+(deflisten workspaces :initial "[]" "bash ./scripts/get-workspaces.sh")
+
+;; 定義視窗 (Window)
+(defwindow bar
+  :monitor 0
+  :geometry (geometry :x "0%"
+                     :y "10px"      ; 懸浮感：離頂部 10px
+                     :width "98%"   ; 懸浮感：左右留邊
+                     :height "40px"
+                     :anchor "top center")
+  :stacking "fg"
+  :exclusive true ; 自動避開視窗，不重疊
+  (bar-layout))    ; 呼叫在 widgets/bar.yuck 裡的佈局
+

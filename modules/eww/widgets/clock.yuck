@@ -1,0 +1,8 @@
+(defpoll time :interval "1s" "date '+%H:%M'")
+(defpoll date :interval "1h" "date '+%b %d'")
+
+(defwidget clock-module []
+  (box :class "clock-box" :space-evenly false :spacing 8
+    (label :text "   ${date}" :class "date-text")
+    (label :text "   ${time}" :class "time-text")))
+
