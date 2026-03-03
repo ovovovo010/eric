@@ -7,13 +7,13 @@ let
   # 定義強調色，使用 Stylix 的 base0D
   accent-color = colors.base0D;
   
-  # 定義按鈕佈局
+  # 定義按鈕佈局 - 直接寫成 Nix 值，不要用 writeText
   layout = {
     label = [
       {
         name = "lock";
         text = "Lock";
-        action = "hyprlock";  # 如果你用的是 hyprlock
+        action = "hyprlock";
         keybind = "l";
       }
       {
@@ -37,10 +37,7 @@ let
     ];
   };
   
-  # 將佈局轉換為 wlogout 需要的 JSON 格式
-  layoutJson = pkgs.writeText "wlogout-layout.json" (builtins.toJSON layout);
-  
-  # 建立 CSS 樣式，從 Stylix 動態生成
+  # 建立 CSS 樣式
   styleCss = pkgs.writeText "wlogout-style.css" ''
     /* 從 Stylix 動態生成的顏色變數 */
     @define-color background ${colors.base00};
@@ -113,10 +110,10 @@ in
     gnome.adwaita-icon-theme  # 提供預設圖標
   ];
 
-  # 配置 wlogout
+  # 配置 wlogout - 直接給值，不要用 writeText
   programs.wlogout = {
     enable = true;
-    layout = layoutJson;
-    style = styleCss;
+    layout = layout;      # 直接給 Nix 值，不要用 derivation
+    style = styleCss;     # style 接受 derivation 路徑
   };
 }
