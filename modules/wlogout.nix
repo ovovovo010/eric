@@ -1,41 +1,44 @@
 { config, pkgs, lib, ... }:
 
 let
-  # 從 Stylix 獲取顏色變數 (帶 # 前綴)
+  # 從 Stylix 獲取顏色變數
   colors = config.lib.stylix.colors.withHashtag;
   
-  # 定義強調色，使用 Stylix 的 base0D
-  accent-color = colors.base0D;
+  # 獲取圖標主題路徑（從 Stylix 設定）
+  iconTheme = config.stylix.iconTheme;
   
-  # 定義按鈕佈局 - 直接寫成 Nix 值，不要用 writeText
-  layout = {
-    label = [
-      {
-        name = "lock";
-        text = "Lock";
-        action = "swaylock";
-        keybind = "l";
-      }
-      {
-        name = "logout";
-        text = "Logout";
-        action = "hyprctl dispatch exit";
-        keybind = "e";
-      }
-      {
-        name = "reboot";
-        text = "Reboot";
-        action = "systemctl reboot";
-        keybind = "r";
-      }
-      {
-        name = "shutdown";
-        text = "Shutdown";
-        action = "systemctl poweroff";
-        keybind = "s";
-      }
-    ];
-  };
+  # 如果沒有設定圖標主題，提供一個 fallback（理論上你已經設定了）
+  iconPath = if iconTheme?.package != null && iconTheme?.name != null
+    then "${iconTheme.package}/share/icons/${iconTheme.name}"
+    else "${pkgs.gnome.adwaita-icon-theme}/share/icons/Adwaita";
+  
+  # 定義按鈕佈局 - **修正為直接列表，不要外層 label**
+  layout = [
+    {
+      name = "lock";
+      text = "Lock";
+      action = "lock";      # 使用 lock script
+      keybind = "l";
+    }
+    {
+      name = "logout";
+      text = "Logout";
+      action = "hyprctl dispatch exit";
+      keybind = "e";
+    }
+    {
+      name = "reboot";
+      text = "Reboot";
+      action = "systemctl reboot";
+      keybind = "r";
+    }
+    {
+      name = "shutdown";
+      text = "Shutdown";
+      action = "systemctl poweroff";
+      keybind = "s";
+    }
+  ];
   
   # 建立 CSS 樣式
   styleCss = pkgs.writeText "wlogout-style.css" ''
@@ -43,7 +46,7 @@ let
     @define-color background ${colors.base00};
     @define-color background-alt ${colors.base01};
     @define-color foreground ${colors.base05};
-    @define-color selected ${accent-color};
+    @define-color selected ${colors.base0D};
     @define-color border ${colors.base03};
     @define-color hover-bg ${colors.base02};
     @define-color text-color ${colors.base05};
@@ -84,21 +87,21 @@ let
       background-size: 30%;
     }
 
-    /* 為各個按鈕設定圖標 */
+    /* 使用你的 Catppuccin 圖標主題的圖標 */
     #lock {
-      background-image: url("${pkgs.gnome.adwaita-icon-theme}/share/icons/Adwaita/symbolic/status/lockscreen-symbolic.svg");
+      background-image: url("${iconPath}/symbolic/status/lockscreen-symbolic.svg");
     }
 
     #logout {
-      background-image: url("${pkgs.gnome.adwaita-icon-theme}/share/icons/Adwaita/symbolic/actions/system-log-out-symbolic.svg");
+      background-image: url("${iconPath}/symbolic/actions/system-log-out-symbolic.svg");
     }
 
     #reboot {
-      background-image: url("${pkgs.gnome.adwaita-icon-theme}/share/icons/Adwaita/symbolic/actions/system-reboot-symbolic.svg");
+      background-image: url("${iconPath}/symbolic/actions/system-reboot-symbolic.svg");
     }
 
     #shutdown {
-      background-image: url("${pkgs.gnome.adwaita-icon-theme}/share/icons/Adwaita/symbolic/actions/system-shutdown-symbolic.svg");
+      background-image: url("${iconPath}/symbolic/actions/system-shutdown-symbolic.svg");
     }
   '';
 in
@@ -106,14 +109,29 @@ in
   # 安裝必要的套件
   home.packages = with pkgs; [
     wlogout
-    librsvg        # 用於載入 SVG 圖標
-    gnome.adwaita-icon-theme  # 提供預設圖標
+    librsvg  # 用於載入 SVG 圖標
   ];
 
-  # 配置 wlogout - 直接給值，不要用 writeText
+  # lock script（如果還沒裝）
+  home.file.".local/bin/lock" = {
+    text = ''
+      #!/bin/sh
+      if command -v hyprlock > /dev/null 2>&1; then
+        exec hyprlock
+      elif command -v swaylock > /dev/null 2>&1; then
+        exec swaylock
+      else
+        notify-send "錯誤" "找不到任何鎖定工具 (hyprlock 或 swaylock)"
+        exit 1
+      fi
+    '';
+    executable = true;
+  };
+
+  # 配置 wlogout
   programs.wlogout = {
     enable = true;
-    layout = layout;      # 直接給 Nix 值，不要用 derivation
-    style = styleCss;     # style 接受 derivation 路徑
+    layout = layout;   # 現在是直接列表，符合類型要求
+    style = styleCss;
   };
 }
