@@ -18,7 +18,6 @@
     ./modules/obs.nix
     ./modules/lact.nix
     ./modules/fcitx5.nix
-    ./modules/code-cursor.nix
     ./modules/openbox.nix
     ./modules/wlogout.nix
     ./modules/swaylock.nix
