@@ -64,7 +64,6 @@
         width = mkLiteral "600px";
         height = mkLiteral "600px";
         padding = mkLiteral "@padding";
-        box-shadow = mkLiteral "0 8px 32px rgba(0, 0, 0, 0.3)";
       };
 
       # === 主容器 ===
@@ -91,7 +90,7 @@
         text-color = mkLiteral "@bg-main";
         padding = mkLiteral "6px 12px";
         border-radius = mkLiteral "6px";
-        font = mkLiteral "JetBrains Mono Bold 12";
+        font = "JetBrains Mono Bold 12";
       };
 
       "entry" = {
@@ -127,7 +126,7 @@
         border-color = mkLiteral "@accent-pink";
         border-radius = mkLiteral "6px";
         padding = mkLiteral "8px 10px";
-        font = mkLiteral "JetBrains Mono Bold 12";
+        font = "JetBrains Mono Bold 12";
       };
 
       # === 圖標與文本 ===
