@@ -103,12 +103,11 @@
     librsvg
     openbox
     obconf
+    rename
+    helix
 
-    # niri 與相關輔助
-    niri
     xwayland-satellite
 
-    # 開發 / 其他
-    code-cursor
   ];
 }
+
