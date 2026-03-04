@@ -3,4 +3,5 @@
 {
   stylix.targets.mako.enable = false;
   stylix.targets.rofi.enable = false;
+  stylix.targets.qt.enable = false;
 }
