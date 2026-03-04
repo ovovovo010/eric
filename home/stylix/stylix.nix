@@ -6,13 +6,9 @@
     inputs.stylix.homeManagerModules.stylix
   ];
 
-  # Stylix Home Manager 配置
+  # Stylix Home Manager 配置 (由系統層級設定主題，這裡只補充 home-specific 設定)
   stylix = {
     enable = true;
-    
-    # 主題方案
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-    polarity = "dark";
     
     # 字體配置
     fonts = {
