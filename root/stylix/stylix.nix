@@ -11,7 +11,7 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     polarity = "dark";
     
-    image = ./wallpaper.png;
+    image = ../wallpaper.png;
 
     fonts = {
       monospace = {

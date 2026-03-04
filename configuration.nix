@@ -6,35 +6,35 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ./root/fcitx5.nix
-    ./root/boot.nix
-    ./root/networking.nix
-    ./root/locale.nix
-    ./root/audio.nix
-    ./root/driver.nix
-    ./root/desktop.nix
-    ./root/users.nix
-    ./root/packages.nix
-    ./root/stylix.nix
-    ./root/mirror.nix
-    ./root/greetd.nix
-    ./root/steam.nix
-    ./root/nushell.nix
-    ./root/data.nix
-    ./root/polkit.nix
-    ./root/flatpak.nix
-    ./root/thunar.nix
-    ./root/zen.nix
-    ./root/clamav.nix
-    ./root/systemd.nix
-    ./root/seatd.nix
-    ./root/wayland.nix
-    ./root/obs.nix
-    ./root/zfs.nix
-    ./root/zram.nix
-    ./root/lact.nix
-    ./root/ssh.nix
-    ./root/distrobox.nix
+    ./root/fcitx5/fcitx5.nix
+    ./root/boot/boot.nix
+    ./root/networking/networking.nix
+    ./root/locale/locale.nix
+    ./root/audio/audio.nix
+    ./root/driver/driver.nix
+    ./root/desktop/desktop.nix
+    ./root/users/users.nix
+    ./root/packages/packages.nix
+    ./root/stylix/stylix.nix
+    ./root/mirror/mirror.nix
+    ./root/greetd/greetd.nix
+    ./root/steam/steam.nix
+    ./root/nushell/nushell.nix
+    ./root/data/data.nix
+    ./root/polkit/polkit.nix
+    ./root/flatpak/flatpak.nix
+    ./root/thunar/thunar.nix
+    ./root/zen/zen.nix
+    ./root/clamav/clamav.nix
+    ./root/systemd/systemd.nix
+    ./root/seatd/seatd.nix
+    ./root/wayland/wayland.nix
+    ./root/obs/obs.nix
+    ./root/zfs/zfs.nix
+    ./root/zram/zram.nix
+    ./root/lact/lact.nix
+    ./root/ssh/ssh.nix
+    ./root/distrobox/distrobox.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
