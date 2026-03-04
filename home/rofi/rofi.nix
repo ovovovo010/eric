@@ -123,11 +123,6 @@
         transition = mkLiteral "all 150ms ease";
       };
 
-      "element:hover" = {
-        background-color = mkLiteral "@bg-light";
-        text-color = mkLiteral "@accent-teal";
-      };
-
       # === 選中元素 ===
       "element selected" = {
         background-color = mkLiteral "@accent-pink";
@@ -166,11 +161,6 @@
         background-color = mkLiteral "@bg-main";
         border = mkLiteral "1px solid";
         border-color = mkLiteral "@bg-light";
-      };
-
-      "button:hover" = {
-        background-color = mkLiteral "@bg-light";
-        text-color = mkLiteral "@accent-blue";
       };
 
       "button selected" = {

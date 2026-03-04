@@ -34,7 +34,7 @@
   background-color: rgba(30, 30, 46, 0.85);
   backdrop-filter: blur(15px);
   border-radius: 14px;
-  padding: 8px 20px;
+  padding: 4px 12px;
   color: var(--text);
   font-size: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -72,8 +72,8 @@
 
 /* === 啟動器按鈕 === */
 .launcher-btn {
-  font-size: 18px;
-  padding: 6px 10px;
+  font-size: 16px;
+  padding: 4px 8px;
   border-radius: 8px;
   background-color: rgba(148, 226, 213, 0.15);
   color: var(--teal);
@@ -103,13 +103,13 @@
 }
 
 .workspace-btn {
-  min-width: 28px;
-  padding: 6px 8px;
+  min-width: 24px;
+  padding: 4px 6px;
   border-radius: 6px;
   background-color: rgba(88, 86, 214, 0.1);
   color: var(--subtext0);
   font-weight: bold;
-  font-size: 12px;
+  font-size: 11px;
   transition: all 150ms ease;
   cursor: pointer;
   border: 1px solid rgba(137, 180, 250, 0.1);
@@ -130,7 +130,7 @@
 
 /* === 時鐘 === */
 .clock-widget {
-  padding: 6px 12px;
+  padding: 4px 8px;
   border-radius: 8px;
   background-color: rgba(137, 180, 250, 0.1);
   transition: all 150ms ease;
@@ -171,8 +171,8 @@
 }
 
 .sys-btn {
-  min-width: 50px;
-  padding: 6px 10px;
+  min-width: 40px;
+  padding: 4px 8px;
   border-radius: 6px;
   background-color: rgba(245, 224, 244, 0.08);
   color: var(--text);
@@ -206,8 +206,8 @@
 }
 
 .sys-item {
-  min-width: 55px;
-  padding: 6px 10px;
+  min-width: 45px;
+  padding: 4px 8px;
   border-radius: 6px;
   background-color: rgba(166, 173, 200, 0.08);
   color: var(--text);
@@ -228,7 +228,7 @@
 /* === 下拉菜單 === */
 .menu-popup {
   position: absolute;
-  top: 45px;
+  top: 36px;
   right: 0;
   background-color: rgba(24, 24, 37, 0.95);
   backdrop-filter: blur(10px);
