@@ -121,7 +121,6 @@
     # 額外字型 ⭐ 新增
     noto-fonts                   # Noto 字型家族
     noto-fonts-color-emoji             # Noto 表情符號
-    noto-fonts-cjk                # Noto 中日韓字型（你已經有 noto-fonts-cjk-sans/serif）
     
     # 開發工具補充 ⭐ 新增
     nix-prefetch-git              # 預取 Git 倉庫
