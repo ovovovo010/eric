@@ -67,7 +67,6 @@
         width = mkLiteral "600px";
         height = mkLiteral "600px";
         padding = mkLiteral "@padding";
-        box-shadow = mkLiteral "0 8px 32px rgba(0, 0, 0, 0.3)";
       };
 
       # === 主容器 ===
@@ -120,7 +119,6 @@
         background-color = mkLiteral "@bg-alt";
         text-color = mkLiteral "@fg-alt";
         border-radius = mkLiteral "6px";
-        transition = mkLiteral "all 150ms ease";
       };
 
       # === 選中元素 ===
