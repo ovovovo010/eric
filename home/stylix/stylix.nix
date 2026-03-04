@@ -46,6 +46,5 @@
   # 確保 Qt 應用程式使用正確的環境變數
   home.sessionVariables = {
     QT_STYLE_OVERRIDE = "kvantum";
-    QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 }
