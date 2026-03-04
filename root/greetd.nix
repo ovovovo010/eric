@@ -24,7 +24,6 @@
     settings = {
       GTK = {
         application_prefer_dark_theme = true;
-        font_name = lib.mkForce "JetBrainsMono Nerd Font Mono 11";
       };
       commands = {
         reboot = ["systemctl" "reboot"];

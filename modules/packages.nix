@@ -63,6 +63,7 @@
     electron-mail
     gitkraken
     pavucontrol
+    vscode
 
     # Nix / Git 輔助
     alejandra
