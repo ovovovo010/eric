@@ -3,12 +3,33 @@
 {
   gtk = {
     enable = true;
-    # iconTheme 由 stylix.iconTheme 統一管理，不要在這裡重複定義
 
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
       gtk-xft-antialias = 1;
       gtk-xft-hinting = 1;
+    };
+  };
+
+  # 設定預設應用程式 (.desktop 檔)
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      # 文字編輯器 - 所有文本檔案都用 nvim
+      "text/plain" = "nvim.desktop";
+      "text/x-shellscript" = "nvim.desktop";
+      "application/json" = "nvim.desktop";
+      "application/xml" = "nvim.desktop";
+      "text/x-c" = "nvim.desktop";
+      "text/x-c++" = "nvim.desktop";
+      "text/x-python" = "nvim.desktop";
+      "text/x-nix" = "nvim.desktop";
+      
+      # 瀏覽器
+      "text/html" = "firefox.desktop";
+      "application/xhtml+xml" = "firefox.desktop";
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
     };
   };
 

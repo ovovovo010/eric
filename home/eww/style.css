@@ -1,25 +1,32 @@
-/* Catppuccin Mocha 配色 */
-$bg:           #1e1e2e;
-$surface0:     #313244;
-$surface1:     #45475a;
-$surface2:     #585b70;
-$overlay0:     #6c7086;
-$overlay1:     #7f849c;
-$overlay2:     #9399b2;
-$text:         #cdd6f4;
-$subtext0:     #a6adc8;
-$subtext1:     #bac2de;
+/* Catppuccin Mocha 配色 - 純 CSS */
+:root {
+  --bg: #1e1e2e;
+  --surface0: #313244;
+  --surface1: #45475a;
+  --surface2: #585b70;
+  --overlay0: #6c7086;
+  --overlay1: #7f849c;
+  --overlay2: #9399b2;
+  --text: #cdd6f4;
+  --subtext0: #a6adc8;
+  --subtext1: #bac2de;
+  --lavender: #b4a0ff;
+  --blue: #89b4fa;
+  --sky: #89dceb;
+  --cyan: #9fd3e2;
+  --green: #98c37e;
+  --yellow: #f9e2af;
+  --orange: #fab387;
+  --red: #f38ba8;
+  --maroon: #eba0ac;
+  --pink: #f5c2e7;
+}
 
-$lavender:     #b4a0ff;
-$blue:         #89b4fa;
-$sky:          #89dceb;
-$cyan:         #9fd3e2;
-$green:        #98c37e;
-$yellow:       #f9e2af;
-$orange:       #fab387;
-$red:          #f38ba8;
-$maroon:       #eba0ac;
-$pink:         #f5c2e7;
+* {
+  all: unset;
+  font-family: "JetBrains Mono", "Noto Sans CJK SC", monospace;
+  font-size: 12px;
+}
 
 /* === Bar 容器 === */
 .bar-container {
@@ -27,24 +34,25 @@ $pink:         #f5c2e7;
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(180, 160, 255, 0.15);
   padding: 6px 12px;
-  color: $text;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
-  /* 確保充滿整個高度 */
+  color: var(--text);
+  font-size: 12px;
   min-height: 100%;
 }
 
 /* === 左側區塊 === */
 .bar-left {
-  padding-right: 8px;
+  padding-right: 12px;
   border-right: 1px solid rgba(180, 160, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .app-launcher {
   padding: 6px 10px;
   border-radius: 8px;
   background-color: rgba(180, 160, 255, 0.15);
-  color: $lavender;
+  color: var(--lavender);
   border: 1px solid rgba(180, 160, 255, 0.3);
   font-size: 14px;
   cursor: pointer;
@@ -64,7 +72,9 @@ $pink:         #f5c2e7;
 
 /* === 工作區 === */
 .workspaces {
-  /* 父容器的 spacing 已設定 */
+  display: flex;
+  gap: 4px;
+  align-items: center;
 }
 
 .workspace-btn {
@@ -72,21 +82,22 @@ $pink:         #f5c2e7;
   padding: 4px 8px;
   border-radius: 6px;
   background-color: rgba(88, 91, 112, 0.4);
-  color: $subtext1;
+  color: var(--subtext1);
   border: 1px solid rgba(180, 160, 255, 0.2);
   cursor: pointer;
   transition: all 150ms ease-in-out;
   font-weight: 500;
+  text-align: center;
 }
 
 .workspace-btn:hover {
   background-color: rgba(88, 91, 112, 0.6);
-  color: $text;
+  color: var(--text);
 }
 
 .workspace-btn.active {
   background-color: rgba(180, 160, 255, 0.3);
-  color: $lavender;
+  color: var(--lavender);
   border-color: rgba(180, 160, 255, 0.5);
   box-shadow: 0 0 8px rgba(180, 160, 255, 0.2);
 }
@@ -94,79 +105,45 @@ $pink:         #f5c2e7;
 /* === 中間區塊 (時鐘) === */
 .bar-center {
   padding: 0 12px;
-}
-
-.clock-box {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.clock-time {
-  font-size: 13px;
+.time-display {
+  color: var(--lavender);
+  font-size: 14px;
   font-weight: 600;
-  color: $lavender;
 }
 
-.clock-date {
-  font-size: 9px;
-  color: $subtext0;
-  margin-top: -2px;
+.date-display {
+  color: var(--subtext1);
+  font-size: 10px;
 }
 
-/* === 右側區塊 (系統資訊) === */
+/* === 右側區塊 === */
 .bar-right {
-  padding-left: 8px;
+  padding-left: 12px;
   border-left: 1px solid rgba(180, 160, 255, 0.1);
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 .sys-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
   padding: 4px 8px;
   border-radius: 6px;
   background-color: rgba(88, 91, 112, 0.3);
   border: 1px solid rgba(180, 160, 255, 0.15);
-  transition: all 100ms ease-in-out;
+  color: var(--text);
+  font-size: 11px;
 }
 
 .sys-item:hover {
   background-color: rgba(88, 91, 112, 0.5);
   border-color: rgba(180, 160, 255, 0.3);
-}
-
-.sys-icon {
-  font-size: 12px;
-  color: $cyan;
-}
-
-.sys-text {
-  font-size: 10px;
-  color: $text;
-  min-width: 30px;
-}
-
-.sys-button {
-  padding: 4px 6px;
-  border-radius: 6px;
-  background-color: rgba(157, 211, 226, 0.15);
-  color: $sky;
-  border: none;
-  cursor: pointer;
-  font-size: 13px;
-  transition: all 100ms ease-in-out;
-}
-
-.sys-button:hover {
-  background-color: rgba(157, 211, 226, 0.25);
-  color: $cyan;
-}
-
-.sys-button:active {
-  background-color: rgba(157, 211, 226, 0.35);
-}
-
-/* === 通用 === */
-button {
-  all: unset;
-}
-
-label {
-  color: inherit;
 }

@@ -40,6 +40,10 @@
     '';
 
     envFile.text = ''
+      # 設定預設編輯器
+      $env.EDITOR = "nvim"
+      $env.VISUAL = "nvim"
+      
       # zoxide 初始化
       zoxide init nushell | save -f ~/.zoxide.nu
 

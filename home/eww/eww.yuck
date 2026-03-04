@@ -1,5 +1,5 @@
-;; Catppuccin Mocha 透明 Blur Top Bar for eww 0.6
-;; 完整可用的工作區、時鐘、系統資訊 top panel
+;; Catppuccin Mocha 透明 Blur Top Bar
+;; eww 0.6+ 版本
 
 ;; === 變數與監聽器 ===
 
@@ -7,10 +7,11 @@
 (deflisten workspaces :initial "[]"
   "bash ~/.config/eww/scripts/workspaces.sh")
 
-;; CPU 與記憶體
+;; CPU
 (defpoll cpu_usage :interval "1s"
   "echo $((100 - $(vmstat 1 2 | tail -1 | awk '{print $15}'))))")
 
+;; 記憶體
 (defpoll mem_usage :interval "2s"
   "free | grep Mem | awk '{printf \"%.0f\", $3/$2 * 100}'")
 
@@ -18,12 +19,48 @@
 (defpoll time :interval "1s"
   "date '+%H:%M'")
 
+;; 日期
 (defpoll date_str :interval "60s"
   "date '+%a %d %b'")
 
-;; === Widget 引入 ===
+;; 網路狀態 (可選)
+(defpoll net_status :interval "5s"
+  "nmcli -t -f ACTIVE,SSID dev wifi | grep '^yes' | cut -d: -f2 || echo 'offline'")
 
-(include "./widgets/bar.yuck")
+;; 電池 (如果有)
+(defpoll battery :interval "10s"
+  "cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || echo '100'")
+
+;; === Widget 定義 ===
+
+(defwidget bar-main []
+  (centerbox :class "bar-container"
+    ;; 左側：啟動器 + 工作區
+    (box :class "bar-left" :space-evenly false :spacing 8
+      (button :class "app-launcher"
+              :onclick "rofi -show drun"
+              "")
+      (box :class "workspaces" :space-evenly false :spacing 4
+        (for ws in workspaces
+          (button :class "workspace-btn ${ws.active ? 'active' : ''}"
+                  :onclick "hyprctl dispatch workspace ${ws.id}"
+                  "${ws.id}"))))
+    
+    ;; 中間：時鐘
+    (box :class "bar-center" :space-evenly false :spacing 6
+      (label :class "time-display" :text time)
+      (label :class "date-display" :text date_str))
+    
+    ;; 右側：系統資訊
+    (box :class "bar-right" :space-evenly false :spacing 10
+      (box :class "sys-item"
+        (label :text " ${cpu_usage}%"))
+      (box :class "sys-item"
+        (label :text " ${mem_usage}%"))
+      (box :class "sys-item"
+        (label :text " ${net_status}"))
+      (box :class "sys-item"
+        (label :text "󰁹 ${battery}%")))))
 
 ;; === 視窗定義 ===
 

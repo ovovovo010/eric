@@ -1,26 +1,28 @@
 {pkgs, inputs, ...}: {
   imports = [
-    ./home/packages.nix
-    ./home/hyprland.nix
-    ./home/fonts.nix
-    ./home/steam.nix
-    ./home/nushell.nix
-    ./home/rofi.nix
-    ./home/mako.nix
-    ./home/zen.nix
-    ./home/neovim.nix
-    ./home/cursor.nix
-    ./home/kitty.nix
-    ./home/qt.nix
-    ./home/gtk.nix
-    ./home/spicetify.nix
-    ./home/eww.nix
-    ./home/obs.nix
-    ./home/lact.nix
-    ./home/fcitx5.nix
-    ./home/openbox.nix
-    ./home/wlogout.nix
-    ./home/swaylock.nix
+    ./home/packages/packages.nix
+    ./home/hyprland/hyprland.nix
+    ./home/fonts/fonts.nix
+    ./home/steam/steam.nix
+    ./home/nushell/nushell.nix
+    ./home/rofi/rofi.nix
+    ./home/mako/mako.nix
+    ./home/zen/zen.nix
+    ./home/neovim/neovim.nix
+    ./home/cursor/cursor.nix
+    ./home/kitty/kitty.nix
+    ./home/qt/qt.nix
+    ./home/gtk/gtk.nix
+    ./home/spicetify/spicetify.nix
+    ./home/eww/eww.nix
+    ./home/obs/obs.nix
+    ./home/lact/lact.nix
+    ./home/fcitx5/fcitx5.nix
+    ./home/openbox/openbox.nix
+    ./home/wlogout/wlogout.nix
+    ./home/swaylock/swaylock.nix
+    ./home/yazi/yazi.nix
+    ./home/stylix/stylix.nix
   ];
 
   home.username = "eric";
