@@ -3,10 +3,11 @@
 let
   colors = config.lib.stylix.colors.withHashtag;
   
+  # 安全地獲取圖標主題路徑
   iconThemePath = 
     if config.stylix ? iconTheme && config.stylix.iconTheme ? enable && config.stylix.iconTheme.enable 
     then "${config.stylix.iconTheme.package}/share/icons/${config.stylix.iconTheme.dark}"
-    else "${pkgs.gnome.adwaita-icon-theme}/share/icons/Adwaita";
+    else "${pkgs.adwaita-icon-theme}/share/icons/Adwaita";  # 這裡修改了！
 
   layout = [
     {
