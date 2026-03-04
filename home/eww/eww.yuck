@@ -1,20 +1,40 @@
-;; 核心：引入所有組件檔案 (這是你漏掉的關鍵)
+;; Catppuccin Mocha 透明 Blur Top Bar for eww 0.6
+;; 完整可用的工作區、時鐘、系統資訊 top panel
+
+;; === 變數與監聽器 ===
+
+;; 工作區
+(deflisten workspaces :initial "[]"
+  "bash ~/.config/eww/scripts/workspaces.sh")
+
+;; CPU 與記憶體
+(defpoll cpu_usage :interval "1s"
+  "echo $((100 - $(vmstat 1 2 | tail -1 | awk '{print $15}'))))")
+
+(defpoll mem_usage :interval "2s"
+  "free | grep Mem | awk '{printf \"%.0f\", $3/$2 * 100}'")
+
+;; 時間
+(defpoll time :interval "1s"
+  "date '+%H:%M'")
+
+(defpoll date_str :interval "60s"
+  "date '+%a %d %b'")
+
+;; === Widget 引入 ===
+
 (include "./widgets/bar.yuck")
-(include "./widgets/clock.yuck")
 
-;; 定義監聽器 (抄自 Hyprland 高階配置)
-;; 監聽工作區需要 socat 和 jq，記得在 Nix 裝這兩個套件
-(deflisten workspaces :initial "[]" "bash ./scripts/get-workspaces.sh")
+;; === 視窗定義 ===
 
-;; 定義視窗 (Window)
 (defwindow bar
   :monitor 0
   :geometry (geometry :x "0%"
-                     :y "10px"      ; 懸浮感：離頂部 10px
-                     :width "98%"   ; 懸浮感：左右留邊
-                     :height "40px"
+                     :y "0%"
+                     :width "100%"
+                     :height "36px"
                      :anchor "top center")
   :stacking "fg"
-  :exclusive true ; 自動避開視窗，不重疊
-  (bar-layout))    ; 呼叫在 widgets/bar.yuck 裡的佈局
+  :exclusive true
+  (bar-main))
 

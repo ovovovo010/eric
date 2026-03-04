@@ -1,26 +1,63 @@
-(defwidget bar-layout []
-  (centerbox :class "bar-main-container"
-    ;; 左側：Logo + 工作區
-    (box :halign "start" :spacing 10 :space-evenly false
-         (box :class "logo-pill" "  ")
-         (workspaces-module))
+(defwidget bar-main []
+  (box :class "bar-container"
+       :orientation "h"
+       :space-evenly false
+       :halign "fill"
+       :spacing 0
+    ;; 左側：應用啟動器 + 工作區
+    (box :class "bar-left"
+         :spacing 12
+         :space-evenly false
+      (button :class "app-launcher"
+              :onclick "rofi -show drun"
+              "")
+      (workspaces-widget))
+    
+    ;; 中間：時鐘 (彈性伸展)
+    (box :class "bar-center"
+         :halign "center"
+         :hexpand true
+      (clock-widget))
+    
+    ;; 右側：系統資訊
+    (box :class "bar-right"
+         :spacing 12
+         :space-evenly false
+      (box :class "sys-item"
+           :spacing 6
+           :space-evenly false
+        (label :text "" :class "sys-icon")
+        (label :text cpu_usage :class "sys-text"))
+      (box :class "sys-item"
+           :spacing 6
+           :space-evenly false
+        (label :text "" :class "sys-icon")
+        (label :text mem_usage :class "sys-text"))
+      (box :class "sys-item"
+           :spacing 0
+           :space-evenly false
+        (button :class "sys-button"
+                :onclick "pavucontrol &"
+                "")))))
 
-    ;; 中間：時間膠囊
-    (box :halign "center"
-         (clock-module)) ;; 這裡呼叫 widgets/clock.yuck 裡的組件
+;; === 工作區 Widget ===
 
-    ;; 右側：系統狀態
-    (box :halign "end" :spacing 10 :space-evenly false
-         (box :class "sys-pill" 
-              (label :text "   ${round(EWW_CPU.avg, 0)}%"))
-         (box :class "sys-pill" 
-              (label :text "   80%")))
-  )
-)
+(defwidget workspaces-widget []
+  (box :class "workspaces"
+       :spacing 8
+       :space-evenly false
+    (for ws in workspaces
+      (button :class "workspace-btn ${ws.active ? "active" : "inactive"}"
+              :onclick "hyprctl dispatch workspace ${ws.id}"
+              "${ws.id}"))))
 
-;; 簡單的工作區顯示 (抄自簡單版 dotfiles)
-(defwidget workspaces-module []
-  (box :class "ws-pill" :spacing 5
-    (for i in "[1, 2, 3, 4]"
-      (button :onclick "hyprctl dispatch workspace ${i}" "${i}"))))
+;; === 時鐘 Widget ===
+
+(defwidget clock-widget []
+  (box :class "clock-box"
+       :orientation "v"
+       :halign "center"
+       :spacing 2
+    (label :text time :class "clock-time")
+    (label :text date_str :class "clock-date")))
 

@@ -1,0 +1,172 @@
+/* Catppuccin Mocha 配色 */
+$bg:           #1e1e2e;
+$surface0:     #313244;
+$surface1:     #45475a;
+$surface2:     #585b70;
+$overlay0:     #6c7086;
+$overlay1:     #7f849c;
+$overlay2:     #9399b2;
+$text:         #cdd6f4;
+$subtext0:     #a6adc8;
+$subtext1:     #bac2de;
+
+$lavender:     #b4a0ff;
+$blue:         #89b4fa;
+$sky:          #89dceb;
+$cyan:         #9fd3e2;
+$green:        #98c37e;
+$yellow:       #f9e2af;
+$orange:       #fab387;
+$red:          #f38ba8;
+$maroon:       #eba0ac;
+$pink:         #f5c2e7;
+
+/* === Bar 容器 === */
+.bar-container {
+  background-color: rgba(30, 30, 46, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(180, 160, 255, 0.15);
+  padding: 6px 12px;
+  color: $text;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  /* 確保充滿整個高度 */
+  min-height: 100%;
+}
+
+/* === 左側區塊 === */
+.bar-left {
+  padding-right: 8px;
+  border-right: 1px solid rgba(180, 160, 255, 0.1);
+}
+
+.app-launcher {
+  padding: 6px 10px;
+  border-radius: 8px;
+  background-color: rgba(180, 160, 255, 0.15);
+  color: $lavender;
+  border: 1px solid rgba(180, 160, 255, 0.3);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 100ms ease-in-out;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.app-launcher:hover {
+  background-color: rgba(180, 160, 255, 0.25);
+  border-color: rgba(180, 160, 255, 0.5);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.app-launcher:active {
+  background-color: rgba(180, 160, 255, 0.35);
+}
+
+/* === 工作區 === */
+.workspaces {
+  /* 父容器的 spacing 已設定 */
+}
+
+.workspace-btn {
+  min-width: 24px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background-color: rgba(88, 91, 112, 0.4);
+  color: $subtext1;
+  border: 1px solid rgba(180, 160, 255, 0.2);
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+  font-weight: 500;
+}
+
+.workspace-btn:hover {
+  background-color: rgba(88, 91, 112, 0.6);
+  color: $text;
+}
+
+.workspace-btn.active {
+  background-color: rgba(180, 160, 255, 0.3);
+  color: $lavender;
+  border-color: rgba(180, 160, 255, 0.5);
+  box-shadow: 0 0 8px rgba(180, 160, 255, 0.2);
+}
+
+/* === 中間區塊 (時鐘) === */
+.bar-center {
+  padding: 0 12px;
+}
+
+.clock-box {
+  text-align: center;
+}
+
+.clock-time {
+  font-size: 13px;
+  font-weight: 600;
+  color: $lavender;
+}
+
+.clock-date {
+  font-size: 9px;
+  color: $subtext0;
+  margin-top: -2px;
+}
+
+/* === 右側區塊 (系統資訊) === */
+.bar-right {
+  padding-left: 8px;
+  border-left: 1px solid rgba(180, 160, 255, 0.1);
+}
+
+.sys-item {
+  padding: 4px 8px;
+  border-radius: 6px;
+  background-color: rgba(88, 91, 112, 0.3);
+  border: 1px solid rgba(180, 160, 255, 0.15);
+  transition: all 100ms ease-in-out;
+}
+
+.sys-item:hover {
+  background-color: rgba(88, 91, 112, 0.5);
+  border-color: rgba(180, 160, 255, 0.3);
+}
+
+.sys-icon {
+  font-size: 12px;
+  color: $cyan;
+}
+
+.sys-text {
+  font-size: 10px;
+  color: $text;
+  min-width: 30px;
+}
+
+.sys-button {
+  padding: 4px 6px;
+  border-radius: 6px;
+  background-color: rgba(157, 211, 226, 0.15);
+  color: $sky;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 100ms ease-in-out;
+}
+
+.sys-button:hover {
+  background-color: rgba(157, 211, 226, 0.25);
+  color: $cyan;
+}
+
+.sys-button:active {
+  background-color: rgba(157, 211, 226, 0.35);
+}
+
+/* === 通用 === */
+button {
+  all: unset;
+}
+
+label {
+  color: inherit;
+}
