@@ -132,7 +132,6 @@
     nvtopPackages.nvidia
     
     # 編輯器補充 ⭐ 新增
-    neovim                        # 如果你想要 Neovim
     vim                           # 基本 vim
     micro                    
     zed-editor 

@@ -14,7 +14,6 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     polarity = "dark";
     
-    
     # 字體配置
     fonts = {
       monospace = {
@@ -36,17 +35,19 @@
     };
     
     targets = {
-    qt.enable = false;
-    mako.enable = false;
-    rofi.enable = false;
+      qt.enable = false;
+      mako.enable = false;
+      rofi.enable = false;
     };
   };
 
-  iconTheme = {
+  # GTK 配置 (包含 icon theme)
+  gtk = {
     enable = true;
-    package = pkgs.papirus-icon-theme;
-    dark = "Papirus-Dark";
-    light = "Papirus-Light";
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
   };
 
   # Qt 配置
@@ -54,11 +55,6 @@
     enable = true;
     platformTheme.name = "kvantum";
     style.name = "kvantum";
-  };
-
-  # GTK 配置（讓 stylix 自動生成，但可以手動覆蓋）
-  gtk = {
-    enable = true;
   };
 
   # Kvantum 配置
