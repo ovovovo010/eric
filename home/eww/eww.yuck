@@ -75,7 +75,7 @@
   (box :class "menu-popup ${show_net_menu ? 'show' : 'hidden'}" :orientation "v" :space-evenly false :spacing 4
     (label :text "Network" :class "menu-title")
     (label :text "${net_status}" :class "menu-value")
-    (button :onclick "nmtui &" :class "menu-action-btn" "Networks")))
+    (button :onclick "nmcli device wifi list &" :class "menu-action-btn" "Scan WiFi")))
 
 ;; 藍牙選單
 (defwidget bt-menu []

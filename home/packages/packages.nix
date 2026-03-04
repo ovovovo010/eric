@@ -53,7 +53,7 @@
     # 系統控制工具（用於 eww bar）
     pamixer                       # 音量控制
     blueman                       # 藍牙管理 GUI
-    nmtui                         # 網路管理 TUI
+    networkmanager                # 網路管理（提供 nmcli）
     prismlauncher
     bitwarden-desktop
     vesktop
@@ -115,6 +115,7 @@
     obconf
     rename
     helix
+    imv
 
     xwayland-satellite
 
