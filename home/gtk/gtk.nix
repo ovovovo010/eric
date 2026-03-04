@@ -14,7 +14,7 @@
   # 設定預設應用程式 (.desktop 檔)
   xdg.mimeApps = {
     enable = true;
-    defaultApplications = {
+    defaultApplications = lib.mkForce {
       # 文字編輯器 - 所有文本檔案都用 nvim
       "text/plain" = "nvim.desktop";
       "text/x-shellscript" = "nvim.desktop";
