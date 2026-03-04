@@ -2,10 +2,10 @@
 
 let
   colors = config.lib.stylix.colors.withHashtag;
-  iconTheme = config.stylix.iconTheme;
-
-  iconPath = if (lib.hasAttr "package" iconTheme) && (lib.hasAttr "dark" iconTheme)
-    then "${iconTheme.package}/share/icons/${iconTheme.dark}"
+  
+  iconThemePath = 
+    if config.stylix ? iconTheme && config.stylix.iconTheme ? enable && config.stylix.iconTheme.enable 
+    then "${config.stylix.iconTheme.package}/share/icons/${config.stylix.iconTheme.dark}"
     else "${pkgs.gnome.adwaita-icon-theme}/share/icons/Adwaita";
 
   layout = [
@@ -81,19 +81,19 @@ let
     }
 
     #lock {
-      background-image: url("${iconPath}/symbolic/status/lockscreen-symbolic.svg");
+      background-image: url("${iconThemePath}/symbolic/status/lockscreen-symbolic.svg");
     }
 
     #logout {
-      background-image: url("${iconPath}/symbolic/actions/system-log-out-symbolic.svg");
+      background-image: url("${iconThemePath}/symbolic/actions/system-log-out-symbolic.svg");
     }
 
     #reboot {
-      background-image: url("${iconPath}/symbolic/actions/system-reboot-symbolic.svg");
+      background-image: url("${iconThemePath}/symbolic/actions/system-reboot-symbolic.svg");
     }
 
     #shutdown {
-      background-image: url("${iconPath}/symbolic/actions/system-shutdown-symbolic.svg");
+      background-image: url("${iconThemePath}/symbolic/actions/system-shutdown-symbolic.svg");
     }
   '';
 in
