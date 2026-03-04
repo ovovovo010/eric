@@ -50,9 +50,6 @@
         accent-teal = mkLiteral "#94e2d5";  # 青色強調
         border = mkLiteral "#b4befe";       # Lavender 邊框
         
-        # === 字體 ===
-        font = mkLiteral "JetBrains Mono 12";
-        
         # === 尺寸 ===
         radius = mkLiteral "10px";
         padding = mkLiteral "8px";
