@@ -62,10 +62,12 @@
 
       nvim-tree = {
         enable = true;
-        hijackCursor = true;
-        syncRootWithCwd = true;
-        view.width = 30;
-        renderer.groupEmpty = true;
+        settings = {
+          hijack_cursor      = true;
+          sync_root_with_cwd = true;
+          view.width         = 30;
+          renderer.group_empty = true;
+        };
       };
 
       bufferline = {

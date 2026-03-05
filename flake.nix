@@ -18,7 +18,7 @@
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     nixvim = {
-      url = "github:nix-community/nixvim";
+      url = "github:nix-community/nixvim/nixos-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -38,7 +38,7 @@
           home-manager.users.eric      = import ./home.nix;
           home-manager.sharedModules   = [
             inputs.spicetify-nix.homeManagerModules.default
-            nixvim.homeManagerModules.nixvim
+            nixvim.homeModules.nixvim
           ];
         }
       ];
