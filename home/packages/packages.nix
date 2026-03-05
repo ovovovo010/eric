@@ -69,7 +69,7 @@
     gitkraken
     pavucontrol
     vscode
-    olive-editor
+    kdenlive
 
     # Nix / Git 輔助
     alejandra

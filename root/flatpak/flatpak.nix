@@ -24,6 +24,7 @@
       "net.lutris.Lutris"
       "com.heroicgameslauncher.hgl"
       "io.github.flattool.Warehouse"
+      "org.olivevideoeditor.Olive"
     ];
   };
 }
