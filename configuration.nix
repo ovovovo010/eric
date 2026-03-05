@@ -38,7 +38,6 @@
     ./root/libvirtd/libvirtd.nix
     ./root/fish/fish.nix
     ./root/zsh/zsh.nix
-    ./root/elvish/elvish.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
