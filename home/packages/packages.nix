@@ -141,7 +141,6 @@
     nvtopPackages.nvidia
     
     # 編輯器補充 ⭐ 新增
-    vim                           # 基本 vim
     micro                    
     zed-editor 
     # 網路工具補充 ⭐ 新增
