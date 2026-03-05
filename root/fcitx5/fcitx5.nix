@@ -37,21 +37,11 @@
     };
   };
 
-  # Rime 繁體拼音方案
-  system.userActivationScripts.rimeConfig = ''
-    mkdir -p $HOME/.local/share/fcitx5/rime
-    cat > $HOME/.local/share/fcitx5/rime/default.custom.yaml << 'EOF'
-patch:
-  schema_list:
-    - schema: luna_pinyin
-EOF
-  '';
-
   environment.sessionVariables = {
-    GTK_IM_MODULE = "fcitx";
-    QT_IM_MODULE = "fcitx";
-    XMODIFIERS = "@im=fcitx";
-    SDL_IM_MODULE = "fcitx";
-    GLFW_IM_MODULE = "ibus";
+    GTK_IM_MODULE = "fcitx5";
+    QT_IM_MODULE = "fcitx5";
+    XMODIFIERS = "@im=fcitx5";
+    SDL_IM_MODULE = "fcitx5";
+    GLFW_IM_MODULE = "fcitx5";
   };
 }

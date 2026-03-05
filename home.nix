@@ -14,7 +14,6 @@
     ./home/qt/qt.nix
     ./home/gtk/gtk.nix
     ./home/spicetify/spicetify.nix
-    ./home/eww/eww.nix
     ./home/obs/obs.nix
     ./home/lact/lact.nix
     ./home/fcitx5/fcitx5.nix
