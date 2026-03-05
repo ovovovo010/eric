@@ -73,8 +73,14 @@
 
     # Nix / Git 輔助
     alejandra
-
-    # 容器用戶端（後端在 system）
+    nix-prefetch-git
+    nix-init
+    nix-update
+    nix-inspect    # 互動式檢查 nixpkgs 屬性
+    nix-melt       # flake.lock 視覺化
+    nvfetcher      # 自動更新套件 source hash
+    nurl           # 從 URL 產生 nix fetcher
+    nix-diff       # 比較兩個 derivation 差異
     podman
 
     # 字型（使用者層級）
@@ -131,13 +137,8 @@
     noto-fonts                   # Noto 字型家族
     noto-fonts-color-emoji             # Noto 表情符號
     
-    # 開發工具補充 ⭐ 新增
-    nix-prefetch-git              # 預取 Git 倉庫
-    nix-init                      # 互動式建立 Nix 套件
-    nix-update                    # 更新 Nix 套件版本
     
     # 系統監控補充 ⭐ 新增
-    btop                          # 你已經有，但保留位置
     nvtopPackages.nvidia
     
     # 編輯器補充 ⭐ 新增

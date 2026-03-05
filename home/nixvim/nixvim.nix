@@ -240,15 +240,11 @@
       notify.enable           = true;
     };
 
-    # ── 系統工具 ────────────────────────────────────────────────
+    # ── 系統工具（格式化/lint 專用，其餘已在 packages.nix）────────
     extraPackages = with pkgs; [
-      alejandra
       stylua
       black
       prettierd
-      ripgrep
-      fd
-      lazygit
       nodePackages.eslint_d
       python3Packages.flake8
     ];
