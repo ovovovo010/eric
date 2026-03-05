@@ -8,7 +8,7 @@
     ./home/rofi/rofi.nix
     ./home/mako/mako.nix
     ./home/zen/zen.nix
-    ./home/neovim/nixvim.nix
+    ./home/nixvim/nixvim.nix
     ./home/cursor/cursor.nix
     ./home/kitty/kitty.nix
     ./home/qt/qt.nix
