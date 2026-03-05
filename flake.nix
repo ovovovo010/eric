@@ -12,15 +12,18 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak";
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-flatpak, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, nix-flatpak, nixvim, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
@@ -34,7 +37,8 @@
           home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.users.eric      = import ./home.nix;
           home-manager.sharedModules   = [
-	    inputs.spicetify-nix.homeManagerModules.default
+            inputs.spicetify-nix.homeManagerModules.default
+            nixvim.homeManagerModules.nixvim
           ];
         }
       ];
