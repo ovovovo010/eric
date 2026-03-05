@@ -30,7 +30,7 @@
     UseInputMethodLanguageToDisplayText=True
     Theme=Catppuccin-Mocha-Lavender
     DarkTheme=Catppuccin-Mocha-Lavender
-    UseDarkTheme=False
+    UseDarkTheme=true
     FollowSystemDarkMode=False
     UseAccentColor=True
   '';
