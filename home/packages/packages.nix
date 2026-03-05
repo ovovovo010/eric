@@ -40,7 +40,7 @@
     deadnix
 
     # 桌面與 Wayland 工具
-    rofi                          # 應用啟動器
+    rofi # 應用啟動器
     kitty
     waybar
     swww
@@ -50,16 +50,15 @@
     yazi
     nnn
     broot
-    
+
     # 系統控制工具（用於 eww bar）
-    pamixer                       # 音量控制
-    blueman                       # 藍牙管理 GUI
-    networkmanager                # 網路管理（提供 nmcli）
+    pamixer # 音量控制
+    blueman # 藍牙管理 GUI
+    networkmanager # 網路管理（提供 nmcli）
     prismlauncher
     bitwarden-desktop
     vesktop
     goverlay
-    
 
     # Shell / 歷史相關
     atuin
@@ -76,11 +75,11 @@
     nix-prefetch-git
     nix-init
     nix-update
-    nix-inspect    # 互動式檢查 nixpkgs 屬性
-    nix-melt       # flake.lock 視覺化
-    nvfetcher      # 自動更新套件 source hash
-    nurl           # 從 URL 產生 nix fetcher
-    nix-diff       # 比較兩個 derivation 差異
+    nix-inspect # 互動式檢查 nixpkgs 屬性
+    nix-melt # flake.lock 視覺化
+    nvfetcher # 自動更新套件 source hash
+    nurl # 從 URL 產生 nix fetcher
+    nix-diff # 比較兩個 derivation 差異
     podman
 
     # 字型（使用者層級）
@@ -108,8 +107,11 @@
     # Qt / Kvantum 相關 ⭐ 這裡已經很完整了
     libsForQt5.qtstyleplugin-kvantum
     kdePackages.qtstyleplugin-kvantum
-    (catppuccin-kvantum.override { variant = "mocha"; accent = "lavender"; })
-    
+    (catppuccin-kvantum.override {
+      variant = "mocha";
+      accent = "lavender";
+    })
+
     # GTK 主題相關 ⭐ 新增
     gnome-themes-extra
     adwaita-qt
@@ -129,45 +131,54 @@
     xwayland-satellite
 
     # 主題相關 ⭐ 新增
-    papirus-icon-theme           # 圖標主題
-    libsForQt5.qt5ct             # Qt5 配置工具
-    libsForQt5.qtstyleplugins    # Qt5 風格插件
-    
+    papirus-icon-theme # 圖標主題
+    libsForQt5.qt5ct # Qt5 配置工具
+    libsForQt5.qtstyleplugins # Qt5 風格插件
+
     # 額外字型 ⭐ 新增
-    noto-fonts                   # Noto 字型家族
-    noto-fonts-color-emoji             # Noto 表情符號
-    
-    
+    noto-fonts # Noto 字型家族
+    noto-fonts-color-emoji # Noto 表情符號
+
     # 系統監控補充 ⭐ 新增
     nvtopPackages.nvidia
-    
+
     # 編輯器補充 ⭐ 新增
-    micro                    
-    zed-editor 
+    micro
+    zed-editor
     # 網路工具補充 ⭐ 新增
-    wireshark                     # 網路封包分析
-    nmap                          # 網路掃描
-    
+    wireshark # 網路封包分析
+    nmap # 網路掃描
+
     # 媒體相關 ⭐ 新增
-    ffmpeg                        # 多媒體處理
-    imagemagick                   # 圖片處理
-    mpv                           # 影片播放器
-    vlc                           # VLC 播放器
-    
+    ffmpeg # 多媒體處理
+    imagemagick # 圖片處理
+    mpv # 影片播放器
+    vlc # VLC 播放器
+
     # 壓縮工具補充 ⭐ 新增
-    p7zip                         # 7zip 支援
-    unrar                         # RAR 解壓縮
-    zip                           # ZIP 壓縮
-    
-    
+    p7zip # 7zip 支援
+    unrar # RAR 解壓縮
+    zip # ZIP 壓縮
+
     # 虛擬化相關 ⭐ 新增
-    virt-manager                  # 虛擬機管理 GUI
-    virt-viewer                   # SPICE 客戶端
-    quickemu                      # 快速建立虛擬機
-    
+    virt-manager # 虛擬機管理 GUI
+    virt-viewer # SPICE 客戶端
+    quickemu # 快速建立虛擬機
+
     # AI 開發工具 ⭐ 新增
-    python3Packages.torch         # PyTorch（如果需要）
-    python3Packages.tensorflow    # TensorFlow（如果需要）
-    ollama                        # 本地 LLM 運行
+    python3Packages.torch # PyTorch（如果需要）
+    python3Packages.tensorflow # TensorFlow（如果需要）
+    ollama
+
+    # Shell
+    zsh
+    elvish
+    oil
+    hilbish
+    xonsh
+    rush
+    murex
+    dune
+    lon
   ];
 }

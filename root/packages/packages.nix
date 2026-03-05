@@ -42,14 +42,5 @@
     # 登入 shell（確保在全域可用）
     nushell
     fish
-    zsh
-    elvish
-    oil
-    hilbish
-    xonsh
-    rush
-    murex
-    dune
-    lon
   ];
 }
