@@ -117,6 +117,8 @@
     rename
     helix
     imv
+    win-virtio
+    win-spice
 
     xwayland-satellite
 
