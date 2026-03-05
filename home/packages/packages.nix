@@ -70,7 +70,6 @@
     pavucontrol
     vscode
     olive-editor
-    natron
 
     # Nix / Git 輔助
     alejandra
