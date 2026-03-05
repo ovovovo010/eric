@@ -35,6 +35,7 @@
     ./root/lact/lact.nix
     ./root/ssh/ssh.nix
     ./root/distrobox/distrobox.nix
+    ./root/libvirtd/libvirtd.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
