@@ -18,7 +18,7 @@
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-25.05";
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
