@@ -43,5 +43,6 @@
     nushell
     fish
     zsh
+    elvish
   ];
 }

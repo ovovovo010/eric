@@ -169,8 +169,5 @@
     python3Packages.torch # PyTorch（如果需要）
     python3Packages.tensorflow # TensorFlow（如果需要）
     ollama
-
-    # Shell
-    elvish
   ];
 }
