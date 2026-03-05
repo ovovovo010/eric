@@ -44,6 +44,23 @@
     ];
 
     # ── 插件 ────────────────────────────────────────────────────
+    colorschemes.catppuccin = {
+      enable = true;
+      settings = {
+        flavour = "mocha";
+        integrations.nvim_tree = true;
+        integrations.telescope.enabled = true;
+        integrations.treesitter = true;
+        integrations.gitsigns = true;
+        integrations.which_key = true;
+        integrations.indent_blankline.enabled = true;
+        integrations.noice = true;
+        integrations.notify = true;
+        integrations.cmp = true;
+        integrations.lsp_saga = false;
+      };
+    };
+
     plugins = {
       web-devicons.enable = true;
 
