@@ -48,6 +48,7 @@
     mako
     hyprshot
     yazi
+    nnn
     broot
     
     # 系統控制工具（用於 eww bar）
@@ -58,7 +59,7 @@
     bitwarden-desktop
     vesktop
     goverlay
-    qtscrcpy
+    
 
     # Shell / 歷史相關
     atuin
