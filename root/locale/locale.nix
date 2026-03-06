@@ -5,5 +5,5 @@
   ...
 }: {
   time.timeZone = "Asia/Taipei";
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "zh_TW.UTF-8";
 }

@@ -69,7 +69,6 @@
     gitkraken
     pavucontrol
     vscode
-    libreoffice
 
     # Nix / Git 輔助
     alejandra
