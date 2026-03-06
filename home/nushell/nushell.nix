@@ -7,9 +7,8 @@
     plugins = with pkgs.nushellPlugins; [
       formats    # 解析 eml、ics、ini、vcf 格式
       query      # 用 CSS selector / XPath / SQL 查詢資料
-      highlight  # 語法高亮（用於 print 程式碼）
+      highlight  # 語法高亮
       polars     # DataFrame 支援（類 pandas）
-      units      # 單位換算
       hcl        # Hashicorp HCL 格式支援
       semver     # 語意化版本比較
     ];
