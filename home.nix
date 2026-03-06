@@ -25,7 +25,7 @@
     ./home/fcitx5/fcitx5.nix
     ./home/openbox/openbox.nix
     ./home/wlogout/wlogout.nix
-    ./home/swaylock/swaylock.nix
+    ./home/hyprlock/hyprlock.nix
     ./home/yazi/yazi.nix
     ./home/stylix/stylix.nix
     ./home/waybar/waybar.nix
