@@ -7,9 +7,6 @@
     vscode.enable = false; # 由 home/vscode/vscode.nix 自行管理
     nixvim.enable = false; # 由 home/nixvim/nixvim.nix 自行管理（catppuccin）
 
-    # ── 終端機 ────────────────────────────────────────────────
-    kitty.enable = false; # 如果 kitty.nix 有自訂配色可關掉
-
     # ── 啟動器 / Bar ──────────────────────────────────────────
     rofi.enable = false; # 由 home/rofi/rofi.nix 自行管理
     waybar.enable = false; # 由 home/waybar/waybar.nix 自行管理
