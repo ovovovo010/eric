@@ -154,8 +154,6 @@
     chafa
     progress
     most
-    virtio-win
-    win-spice
 
     xwayland-satellite
 
@@ -190,8 +188,6 @@
     zip # ZIP 壓縮
 
     # 虛擬化相關 ⭐ 新增
-    virt-manager # 虛擬機管理 GUI
-    virt-viewer # SPICE 客戶端
     quickemu # 快速建立虛擬機
 
     # AI 開發工具 ⭐ 新增
