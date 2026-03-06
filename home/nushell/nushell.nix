@@ -9,7 +9,6 @@
       query      # 用 CSS selector / XPath / SQL 查詢資料
       highlight  # 語法高亮（用於 print 程式碼）
       polars     # DataFrame 支援（類 pandas）
-      net        # 網路工具（DNS、ping）
       units      # 單位換算
       hcl        # Hashicorp HCL 格式支援
       semver     # 語意化版本比較
