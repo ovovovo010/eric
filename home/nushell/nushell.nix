@@ -1,18 +1,12 @@
-# /etc/nixos/modules/nushell.nix
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
-  # ── Nushell ───────────────────────────────────────────
+# home/nushell/nushell.nix
+{ pkgs, ... }: {
   programs.nushell = {
     enable = true;
 
     configFile.text = ''
       $env.config = {
-        show_banner: false
-        edit_mode: vi          # vi 鍵位，改 emacs 也可以
+        show_banner:   false
+        edit_mode:     vi
 
         cursor_shape: {
           vi_insert: line
@@ -21,112 +15,203 @@
 
         completions: {
           case_sensitive: false
-          quick: true
-          partial: true
-          algorithm: "fuzzy"   # 模糊補全
+          quick:          true
+          partial:        true
+          algorithm:      "fuzzy"
         }
 
         history: {
-          max_size: 10000
+          max_size:     10000
           sync_on_enter: true
-          file_format: "sqlite"
+          file_format:  "sqlite"
         }
 
         table: {
-          mode: rounded        # 表格樣式
+          mode:       rounded
           index_mode: always
         }
+
+        color_config: {
+          # Catppuccin Mocha
+          separator:              "#6c7086"
+          leading_trailing_space_bg: { attr: n }
+          header:                 { fg: "#89b4fa" attr: b }
+          empty:                  "#6c7086"
+          bool:                   { fg: "#cba6f7" }
+          int:                    { fg: "#fab387" }
+          filesize:               { fg: "#a6e3a1" }
+          duration:               { fg: "#f9e2af" }
+          date:                   { fg: "#cba6f7" }
+          range:                  { fg: "#f9e2af" }
+          float:                  { fg: "#fab387" }
+          string:                 { fg: "#a6e3a1" }
+          nothing:                { fg: "#6c7086" }
+          binary:                 { fg: "#f38ba8" }
+          cell-path:              { fg: "#cdd6f4" }
+          row_index:              { fg: "#6c7086" attr: b }
+          record:                 { fg: "#89dceb" }
+          list:                   { fg: "#89dceb" }
+          block:                  { fg: "#89b4fa" }
+          hints:                  { fg: "#45475a" }
+          search_result:          { fg: "#1e1e2e" bg: "#f38ba8" }
+
+          shape_and:              { fg: "#cba6f7" attr: b }
+          shape_binary:           { fg: "#cba6f7" attr: b }
+          shape_block:            { fg: "#89b4fa" attr: b }
+          shape_bool:             { fg: "#89dceb" }
+          shape_closure:          { fg: "#89dceb" attr: b }
+          shape_custom:           { fg: "#a6e3a1" }
+          shape_datetime:         { fg: "#89dceb" attr: b }
+          shape_directory:        { fg: "#89dceb" }
+          shape_external:         { fg: "#89dceb" }
+          shape_external_resolved: { fg: "#89b4fa" }
+          shape_externalarg:      { fg: "#a6e3a1" }
+          shape_filepath:         { fg: "#89dceb" }
+          shape_flag:             { fg: "#89b4fa" attr: b }
+          shape_float:            { fg: "#cba6f7" attr: b }
+          shape_garbage:          { fg: "#1e1e2e" bg: "#f38ba8" attr: b }
+          shape_glob_interpolation: { fg: "#89dceb" attr: b }
+          shape_globpattern:      { fg: "#89dceb" attr: b }
+          shape_int:              { fg: "#cba6f7" attr: b }
+          shape_internalcall:     { fg: "#89dceb" attr: b }
+          shape_keyword:          { fg: "#cba6f7" attr: b }
+          shape_list:             { fg: "#89dceb" attr: b }
+          shape_literal:          { fg: "#89b4fa" }
+          shape_match_pattern:    { fg: "#a6e3a1" }
+          shape_matching_brackets: { attr: u }
+          shape_nothing:          { fg: "#89dceb" }
+          shape_operator:         { fg: "#f9e2af" }
+          shape_or:               { fg: "#cba6f7" attr: b }
+          shape_pipe:             { fg: "#cba6f7" attr: b }
+          shape_range:            { fg: "#f9e2af" attr: b }
+          shape_raw_string:       { fg: "#cdd6f4" attr: b }
+          shape_record:           { fg: "#89dceb" attr: b }
+          shape_redirection:      { fg: "#cba6f7" attr: b }
+          shape_semi:             { fg: "#cba6f7" attr: b }
+          shape_signature:        { fg: "#a6e3a1" attr: b }
+          shape_string:           { fg: "#a6e3a1" }
+          shape_string_interpolation: { fg: "#89dceb" attr: b }
+          shape_table:            { fg: "#89b4fa" attr: b }
+          shape_variable:         { fg: "#cba6f7" }
+          shape_vardecl:          { fg: "#cba6f7" attr: u }
+          shape_vardecl_global:   { fg: "#f38ba8" attr: b }
+        }
+
+        menus: [
+          {
+            name: completion_menu
+            only_buffer_difference: false
+            marker: "| "
+            type: {
+              layout: columnar
+              columns: 4
+              col_width: 20
+              col_padding: 2
+            }
+            style: {
+              text:                 { fg: "#cdd6f4" }
+              selected_text:        { fg: "#1e1e2e" bg: "#89b4fa" }
+              description_text:     { fg: "#6c7086" }
+              match_text:           { fg: "#f9e2af" attr: b }
+              selected_match_text:  { fg: "#1e1e2e" bg: "#89b4fa" attr: b }
+            }
+          }
+          {
+            name: history_menu
+            only_buffer_difference: true
+            marker: "? "
+            type: { layout: list; page_size: 10 }
+            style: {
+              text:             { fg: "#cdd6f4" }
+              selected_text:    { fg: "#1e1e2e" bg: "#cba6f7" }
+              description_text: { fg: "#6c7086" }
+            }
+          }
+        ]
+
+        keybindings: [
+          { name: history_menu;      modifier: control; keycode: char_r; mode: [emacs vi_insert vi_normal]; event: { send: menu; name: history_menu } }
+          { name: completion_menu;   modifier: none;    keycode: tab;    mode: [emacs vi_insert];           event: { send: menu; name: completion_menu } }
+        ]
       }
     '';
 
     envFile.text = ''
-      # 設定預設編輯器
       $env.EDITOR = "nvim"
       $env.VISUAL = "nvim"
-      
-      # zoxide 初始化
+      $env.PATH   = ($env.PATH | prepend $"($env.HOME)/.local/bin")
+
+      # zoxide
       zoxide init nushell | save -f ~/.zoxide.nu
 
-      # Starship 初始化
+      # starship
       mkdir ~/.cache/starship
       starship init nu | save -f ~/.cache/starship/init.nu
 
+      # atuin
+      atuin init nu | save -f ~/.atuin.nu
     '';
 
     extraConfig = ''
-      # 載入 zoxide
+      # ── 外部整合 ──────────────────────────────────────────────
       source ~/.zoxide.nu
-
-      # 載入 Starship prompt
       source ~/.cache/starship/init.nu
+      source ~/.atuin.nu
 
-      # 縮寫
-      alias ll   = eza -la --icons --git
-      alias ls   = eza --icons
+      # ── Alias ─────────────────────────────────────────────────
+      # 檔案操作
+      alias ll   = eza -la --icons --git --group-directories-first
+      alias ls   = eza --icons --group-directories-first
+      alias la   = eza -a --icons --group-directories-first
       alias lt   = eza --tree --icons -L 2
-      alias cat  = bat
+      alias lt3  = eza --tree --icons -L 3
+
+      # 系統
+      alias cat  = bat --style=numbers,changes
       alias grep = rg
       alias ps   = procs
       alias top  = btop
+      alias df   = duf
+      alias du   = dust
+
+      # 編輯器
       alias v    = nvim
-      alias rb   = sudo nixos-rebuild switch --flake /etc/nixos#nixos
+      alias vi   = nvim
+      alias vim  = nvim
+      alias z    = zoxide
+
+      # Nix
+      alias sw   = nh os switch /home/eric/nixos-config
+      alias rb   = nh os switch /home/eric/nixos-config
+      alias up   = nix flake update /home/eric/nixos-config
+      alias gc   = nix-collect-garbage -d
+      alias nr   = nix repl '<nixpkgs>'
+
+      # Git
+      alias g    = git
+      alias ga   = git add
+      alias gc   = git commit
+      alias gp   = git push
+      alias gl   = git log --oneline --graph
+      alias gs   = git status
+      alias lg   = lazygit
+
+      # ── 自訂函式 ──────────────────────────────────────────────
+      # 快速建立並進入目錄
+      def mkcd [dir: string] {
+        mkdir $dir
+        cd $dir
+      }
+
+      # 顯示最常用指令
+      def top-cmds [] {
+        history | get command | str replace -r ' .*' "" | sort | uniq -c | sort -r | first 15
+      }
     '';
   };
 
-  # ── Starship prompt ───────────────────────────────────
-  programs.starship = {
-    enable = true;
-    settings = {
-      format = lib.concatStrings [
-        "[░▒▓](#a3aed2)"
-        "[ 󰀄 $username](bg:#a3aed2 fg:#090c0c)"
-        "[](fg:#a3aed2 bg:#769ff0)"
-        "[$directory](bg:#769ff0 fg:#090c0c)"
-        "[](fg:#769ff0 bg:#394260)"
-        "[$git_branch$git_status](bg:#394260 fg:#769ff0)"
-        "[](fg:#394260 bg:#212736)"
-        "[$python$rust$nodejs$golang](bg:#212736 fg:#769ff0)"
-        "[](fg:#212736)"
-        "\n$character"
-      ];
-
-      username = {
-        show_always = true;
-        format = "[$user]($style)";
-      };
-
-      directory = {
-        format = "[ $path]($style)";
-        truncation_length = 3;
-        truncate_to_repo = true;
-      };
-
-      git_branch = {
-        symbol = " ";
-        format = "[ $symbol$branch]($style)";
-      };
-
-      git_status = {
-        format = "([$all_status$ahead_behind]($style) )";
-      };
-
-      character = {
-        success_symbol = "[❯](bold green)";
-        error_symbol = "[❯](bold red)";
-      };
-
-      python.symbol = " ";
-      rust.symbol = " ";
-      nodejs.symbol = " ";
-      golang.symbol = " ";
-    };
-  };
-
-  # ── carapace（跨 shell 補全引擎）────────────────────
   programs.carapace = {
     enable = true;
     enableNushellIntegration = true;
   };
-
-  # 相依套件改由 modules/packages.nix 統一安裝
 }

@@ -1,10 +1,16 @@
-{pkgs, inputs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./home/packages/packages.nix
     ./home/hyprland/hyprland.nix
     ./home/fonts/fonts.nix
     ./home/steam/steam.nix
     ./home/nushell/nushell.nix
+    ./home/nushell/atuin.nix
+    ./home/nushell/starship.nix
     ./home/rofi/rofi.nix
     ./home/mako/mako.nix
     ./home/zen/zen.nix
