@@ -1,6 +1,9 @@
-{ config, pkgs, lib, ... }:
-
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   # 從你的 Hyprland 繼承的程式
   terminal = "kitty";
   launcher = "rofi -show drun";
@@ -71,8 +74,7 @@ let
       </menu>
     </openbox_menu>
   '';
-in
-{
+in {
   # 將設定檔放到 ~/.config/openbox/ 下（openbox-session 會自動讀取）
   home.file.".config/openbox/rc.xml".source = rcXml;
   home.file.".config/openbox/menu.xml".source = menuXml;

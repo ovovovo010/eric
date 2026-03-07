@@ -6,5 +6,6 @@
 }: {
   services.xserver.enable = true;
   programs.hyprland.enable = true;
-  services.desktopManager.gnome.enable = true;
+  services.windowManager.openbox.enable = true;
+  services.windowManager.icewm.enable = true;
 }
