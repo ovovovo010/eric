@@ -6,6 +6,7 @@
   imports = [
     ./home/packages/packages.nix
     ./home/hyprland/hyprland.nix
+    ./home/wayfire/wayfire.nix
     ./home/fonts/fonts.nix
     ./home/steam/steam.nix
     ./home/nushell/nushell.nix

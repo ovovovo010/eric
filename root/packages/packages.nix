@@ -20,7 +20,6 @@
     xclip
     xorg.xinit
     xorg.xorgserver
-    picom
 
     # Steam / 遊戲相關（runtime / overlay / 調優）
     steam-run

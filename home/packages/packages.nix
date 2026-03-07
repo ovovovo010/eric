@@ -84,6 +84,7 @@
     hyperfine
     flamegraph
     networkmanagerapplet
+    gparted
 
     # Shell / 歷史相關
     atuin
@@ -145,8 +146,6 @@
     lact
     wlogout
     librsvg
-    openbox
-    obconf
     rename
     helix
     imv
