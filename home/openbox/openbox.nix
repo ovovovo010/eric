@@ -1,14 +1,9 @@
 # home/openbox/openbox.nix
-{ pkgs, ... }: let
+{pkgs, ...}: let
   terminal = "kitty";
   launcher = "rofi -show drun";
 in {
   home.packages = with pkgs; [
-    openbox
-    obconf
-    xorg.xinit
-    xorg.xorgserver
-    picom
   ];
 
   # ── rc.xml ────────────────────────────────────────────────
