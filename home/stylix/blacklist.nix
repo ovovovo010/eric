@@ -14,7 +14,5 @@
     # ── 其他 ──────────────────────────────────────────────────
     hyprlock.enable = false; # 由 home/hyprlock/hyprlock.nix 自行管理
     spicetify.enable = false; # 由 home/spicetify 自行管理
-    gtk.enable = false; # 如果有自訂 gtk.nix 可關掉
-    qt.enable = false; # 如果有自訂 qt.nix 可關掉
   };
 }
