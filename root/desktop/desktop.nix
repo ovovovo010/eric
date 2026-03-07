@@ -6,4 +6,5 @@
 }: {
   services.xserver.enable = true;
   programs.hyprland.enable = true;
+  services.xserver.displayManager.gnome.enable = true;
 }
