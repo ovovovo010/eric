@@ -38,6 +38,7 @@
     ./root/libvirtd/libvirtd.nix
     ./root/fish/fish.nix
     ./root/zsh/zsh.nix
+    ./root/sched_ext/sched_ext.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
