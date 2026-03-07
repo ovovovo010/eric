@@ -5,12 +5,12 @@
     enable = true;
 
     theme = {
-      name    = "adw-gtk3-dark";
+      name    = lib.mkForce "adw-gtk3-dark";
       package = pkgs.adw-gtk3;
     };
 
     iconTheme = {
-      name    = "Papirus-Dark";
+      name    = lib.mkForce "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
 
