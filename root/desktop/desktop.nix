@@ -1,5 +1,12 @@
 {pkgs, ...}: {
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    windowManager.awesome = {
+      enable = true;
+      luaModules = with pkgs.luaPackages; [
+        luarocks
+      ];
+    };
+  };
   programs.hyprland.enable = true;
-  programs.wayfire.enable = true;
 }
