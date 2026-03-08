@@ -73,7 +73,7 @@
     nnn
     broot
 
-    # 系統控制工具（用於 eww bar）
+    # 系統控制工具
     pamixer # 音量控制
     blueman # 藍牙管理 GUI
     networkmanager # 網路管理（提供 nmcli）
@@ -84,6 +84,7 @@
     hyperfine
     flamegraph
     networkmanagerapplet
+    parted
 
     # Shell / 歷史相關
     atuin
