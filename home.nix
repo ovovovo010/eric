@@ -6,7 +6,6 @@
   imports = [
     ./home/packages/packages.nix
     ./home/hyprland/hyprland.nix
-    ./home/awesome/awesome.nix
     ./home/fonts/fonts.nix
     ./home/steam/steam.nix
     ./home/nushell/nushell.nix
