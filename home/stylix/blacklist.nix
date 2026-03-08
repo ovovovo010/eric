@@ -13,6 +13,5 @@
 
     # ── 其他 ──────────────────────────────────────────────────
     hyprlock.enable = false; # 由 home/hyprlock/hyprlock.nix 自行管理
-    spicetify.enable = false; # 由 home/spicetify 自行管理
   };
 }
