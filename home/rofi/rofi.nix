@@ -1,187 +1,136 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
-  xdg.configFile."xdg-terminals.list".text = ''
-    kitty.desktop
+# home/rofi/rofi.nix
+{ ... }: {
+  xdg.configFile."rofi/config.rasi".text = ''
+    configuration{
+        modi: "drun";
+        icon-theme: "Numix-Circle";
+        font: "JetBrains Mono Regular 13";
+        show-icons: true;
+        terminal: "kitty";
+        drun-display-format: "{icon} {name}";
+        location: 0;
+        disable-history: false;
+        hide-scrollbar: true;
+        display-drun: "   Apps ";
+        sidebar-mode: true;
+        border-radius: 10;
+    }
+
+    @theme "~/.config/rofi/themes/catppuccin-macchiato.rasi"
   '';
-  programs.rofi = {
-    enable = true;
-    package = pkgs.rofi;
 
-    # 基本行為設定
-    extraConfig = {
-      modi = ["drun" "run" "window" "ssh"];
-      icon-theme = "Papirus-Dark";
-      show-icons = true;
-      drun-display-format = "{name}";
-      display-drun = "  Apps";
-      display-run = "  Run";
-      display-window = "  Windows";
-      display-ssh = "  SSH";
+  xdg.configFile."rofi/themes/catppuccin-macchiato.rasi".text = ''
+    * {
+        bg-col:  #24273a;
+        bg-col-light: #24273a;
+        border-col: #24273a;
+        selected-col: #24273a;
+        blue: #8aadf4;
+        fg-col: #cad3f5;
+        fg-col2: #ed8796;
+        grey: #6e738d;
+        teal: #8bd5ca;
 
-      # 性能優化
-      max-history-size = 25;
-      scroll-method = 0;
-      normalize-match = true;
+        width: 600;
+        border-radius: 15px;
+    }
 
-      # 定位與大小
-      location = 0;
-      window-format = "[{w}] {c:20}";
+    element-text, element-icon , mode-switcher {
+        background-color: inherit;
+        text-color:       inherit;
+    }
 
-      # 顯示選項
-      hide-scrollbar = true;
-      sidebar-mode = true;
-      kb-cancel = "Escape";
-    };
+    window {
+        height: 360px;
+        border: 2px;
+        border-color: @teal;
+        background-color: @bg-col;
+    }
 
-    theme = let
-      inherit (config.lib.formats.rasi) mkLiteral;
-    in {
-      "*" = {
-        # === Catppuccin Mocha 配色 ===
-        bg-main = mkLiteral "#1e1e2e";
-        bg-alt = mkLiteral "#313244";
-        bg-light = mkLiteral "#45475a";
-        fg-main = mkLiteral "#cdd6f4";
-        fg-alt = mkLiteral "#a6adc8";
-        accent-blue = mkLiteral "#89b4fa";
-        accent-pink = mkLiteral "#f38ba8";
-        accent-teal = mkLiteral "#94e2d5";
-        border = mkLiteral "#b4befe";
+    mainbox {
+        background-color: @bg-col;
+    }
 
-        # === 尺寸 ===
-        radius = mkLiteral "10px";
-        padding = mkLiteral "8px";
-      };
+    inputbar {
+        children: [prompt,entry];
+        background-color: @bg-col;
+        border-radius: 5px;
+        padding: 2px;
+    }
 
-      # === 窗口樣式 ===
-      "window" = {
-        border = mkLiteral "2px solid";
-        border-color = mkLiteral "@border";
-        background-color = mkLiteral "@bg-main";
-        border-radius = mkLiteral "@radius";
-        width = mkLiteral "620px";
-        height = mkLiteral "420px";
-        padding = mkLiteral "@padding";
-      };
+    prompt {
+        background-color: @blue;
+        padding: 6px;
+        text-color: @bg-col;
+        border-radius: 3px;
+        margin: 20px 0px 0px 20px;
+    }
 
-      # === 主容器 ===
-      "mainbox" = {
-        background-color = mkLiteral "@bg-main";
-        children = mkLiteral "[inputbar, listview, mode-switcher]";
-        spacing = mkLiteral "8px";
-        padding = mkLiteral "0px";
-      };
+    textbox-prompt-colon {
+        expand: false;
+        str: ":";
+    }
 
-      # === 搜索欄 ===
-      "inputbar" = {
-        children = mkLiteral "[prompt, entry]";
-        background-color = mkLiteral "@bg-alt";
-        border = mkLiteral "1px solid";
-        border-color = mkLiteral "@accent-blue";
-        border-radius = mkLiteral "8px";
-        padding = mkLiteral "6px 8px";
-        spacing = mkLiteral "8px";
-        margin = mkLiteral "8px 8px 0px 8px";
-      };
+    entry {
+        padding: 6px;
+        margin: 20px 0px 0px 10px;
+        text-color: @fg-col;
+        background-color: @bg-col;
+    }
 
-      "prompt" = {
-        background-color = mkLiteral "@accent-blue";
-        text-color = mkLiteral "@bg-main";
-        padding = mkLiteral "6px 12px";
-        border-radius = mkLiteral "6px";
-        font = "JetBrains Mono Bold 12";
-      };
+    listview {
+        border: 0px 0px 0px;
+        padding: 6px 0px 0px;
+        margin: 10px 0px 0px 20px;
+        columns: 2;
+        lines: 5;
+        background-color: @bg-col;
+    }
 
-      "entry" = {
-        background-color = mkLiteral "transparent";
-        text-color = mkLiteral "@fg-main";
-        padding = mkLiteral "6px 0";
-        placeholder-color = mkLiteral "@fg-alt";
-      };
+    element {
+        padding: 5px;
+        background-color: @bg-col;
+        text-color: @fg-col;
+    }
 
-      # === 列表視圖 - 兩欄 ===
-      "listview" = {
-        background-color = mkLiteral "@bg-main";
-        spacing = mkLiteral "4px";
-        scrollbar = false;
-        columns = 2;
-        lines = 6;
-        padding = mkLiteral "0px 8px";
-        fixed-height = true;
-        fixed-columns = true;
-      };
+    element-icon {
+        size: 25px;
+    }
 
-      # === 元素基本樣式 ===
-      "element" = {
-        padding = mkLiteral "8px 12px";
-        background-color = mkLiteral "@bg-alt";
-        text-color = mkLiteral "@fg-alt";
-        border-radius = mkLiteral "6px";
-      };
+    element selected {
+        background-color: @selected-col;
+        text-color: @teal;
+    }
 
-      # === 選中元素 ===
-      "element selected" = {
-        background-color = mkLiteral "@accent-pink";
-        text-color = mkLiteral "@bg-main";
-        border = mkLiteral "2px solid";
-        border-color = mkLiteral "@accent-pink";
-        border-radius = mkLiteral "6px";
-        padding = mkLiteral "8px 10px";
-        font = "JetBrains Mono Bold 12";
-      };
+    mode-switcher {
+        spacing: 0;
+    }
 
-      # === 圖標與文本 ===
-      "element-icon" = {
-        size = mkLiteral "24px";
-        margin = mkLiteral "0px 8px 0px 0px";
-      };
+    button {
+        padding: 10px;
+        background-color: @bg-col-light;
+        text-color: @grey;
+        vertical-align: 0.5;
+        horizontal-align: 0.5;
+    }
 
-      "element-text" = {
-        vertical-align = mkLiteral "0.5";
-        text-color = mkLiteral "inherit";
-      };
+    button selected {
+        background-color: @bg-col;
+        text-color: @blue;
+    }
 
-      # === 模式切換器 ===
-      "mode-switcher" = {
-        background-color = mkLiteral "@bg-alt";
-        border-radius = mkLiteral "8px";
-        padding = mkLiteral "4px";
-        margin = mkLiteral "0px 8px 8px 8px";
-        spacing = mkLiteral "4px";
-      };
+    message {
+        background-color: @bg-col-light;
+        margin: 2px;
+        padding: 2px;
+        border-radius: 5px;
+    }
 
-      "button" = {
-        text-color = mkLiteral "@fg-alt";
-        padding = mkLiteral "4px 12px";
-        border-radius = mkLiteral "4px";
-        background-color = mkLiteral "@bg-main";
-        border = mkLiteral "1px solid";
-        border-color = mkLiteral "@bg-light";
-      };
-
-      "button selected" = {
-        background-color = mkLiteral "@accent-blue";
-        text-color = mkLiteral "@bg-main";
-        border-color = mkLiteral "@accent-blue";
-      };
-
-      # === 消息窗口 ===
-      "message" = {
-        background-color = mkLiteral "@bg-alt";
-        border = mkLiteral "1px solid";
-        border-color = mkLiteral "@accent-blue";
-        border-radius = mkLiteral "6px";
-        padding = mkLiteral "8px 12px";
-        margin = mkLiteral "8px";
-      };
-
-      "textbox" = {
-        text-color = mkLiteral "@fg-main";
-      };
-    };
-  };
+    textbox {
+        padding: 6px;
+        margin: 20px 0px 0px 20px;
+        text-color: @blue;
+        background-color: @bg-col-light;
+    }
+  '';
 }
