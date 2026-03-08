@@ -72,6 +72,7 @@
     yazi
     nnn
     broot
+    luaPackages.lgi
 
     # 系統控制工具
     pamixer # 音量控制
