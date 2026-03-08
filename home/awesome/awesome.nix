@@ -1,14 +1,12 @@
 # home/awesome/awesome.nix
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   bling-src = pkgs.fetchFromGitHub {
-    owner  = "blingcorp";
-    repo   = "bling";
-    rev    = "master";
+    owner = "blingcorp";
+    repo = "bling";
+    rev = "master";
     sha256 = "sha256-rhhUsXQ3awjFiEHEG0axilSCWS6pR+w74K/pIfEUc5w=";
   };
-in
-{
+in {
   # 套件統一在 packages.nix 管理
 
   # rc.lua 主設定
@@ -42,11 +40,11 @@ in
     blur-background-frame = true;
 
     # ── 透明度 ───────────────────────────────────────────────
-    inactive-opacity = 0.85;
-    active-opacity   = 1.0;
+    inactive-opacity = 0.68;
+    active-opacity   = 0.8;
     frame-opacity    = 1.0;
     opacity-rule = [
-      "95:class_g = 'kitty'"
+      "80:class_g = 'kitty'"
     ];
 
     # ── 效能 ─────────────────────────────────────────────────
