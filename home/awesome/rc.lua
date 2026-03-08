@@ -1,5 +1,5 @@
 -- ══════════════════════════════════════════════════════════════
--- rc.lua  –  Catppuccin Mocha + bling
+-- rc.lua  –  Catppuccin Mocha + bling (Awesome 4.3 修正版)
 -- ══════════════════════════════════════════════════════════════
 
 pcall(require, "luarocks.loader")
@@ -9,7 +9,6 @@ local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
-local ruled = require("ruled")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local bling = require("bling")
@@ -102,22 +101,19 @@ bling.widget.tag_preview.enable({
 bling.module.flash_focus.enable()
 
 -- ── Layouts ───────────────────────────────────────────────────
-tag.connect_signal("request::default_layouts", function()
-	awful.layout.append_default_layouts({
-		awful.layout.suit.tile,
-		awful.layout.suit.tile.left,
-		awful.layout.suit.floating,
-		awful.layout.suit.max,
-		bling.layout.mstab,
-		bling.layout.centered,
-	})
-end)
+awful.layout.layouts = {
+	awful.layout.suit.tile,
+	awful.layout.suit.tile.left,
+	awful.layout.suit.floating,
+	awful.layout.suit.max,
+	bling.layout.mstab,
+	bling.layout.centered,
+}
 
--- ── Tags ──────────────────────────────────────────────────────
-screen.connect_signal("request::desktop_decoration", function(s)
+-- ── Tags & Wibar ──────────────────────────────────────────────
+awful.screen.connect_for_each_screen(function(s)
 	awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
-	-- Wibar
 	s.mywibox = awful.wibar({
 		position = "top",
 		screen = s,
@@ -126,11 +122,10 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		fg = colors.text,
 	})
 
-	-- taglist
 	s.mytaglist = awful.widget.taglist({
 		screen = s,
 		filter = awful.widget.taglist.filter.all,
-		buttons = {
+		buttons = gears.table.join(
 			awful.button({}, 1, function(t)
 				t:view_only()
 			end),
@@ -145,25 +140,21 @@ screen.connect_signal("request::desktop_decoration", function(s)
 			end),
 			awful.button({}, 5, function(t)
 				awful.tag.viewnext(t.screen)
-			end),
-		},
+			end)
+		),
 	})
 
-	-- tasklist
 	s.mytasklist = awful.widget.tasklist({
 		screen = s,
 		filter = awful.widget.tasklist.filter.currenttags,
-		buttons = {
-			awful.button({}, 1, function(c)
-				c:activate({ context = "tasklist", action = "toggle_minimization" })
-			end),
-		},
+		buttons = gears.table.join(awful.button({}, 1, function(c)
+			c:activate({ context = "tasklist", action = "toggle_minimization" })
+		end)),
 	})
 
-	-- clock
 	local clock = wibox.widget.textclock('<span color="' .. colors.lavender .. '"> %H:%M</span>')
 
-	s.mywibox.widget = {
+	s.mywibox:setup({
 		layout = wibox.layout.align.horizontal,
 		{ -- 左
 			layout = wibox.layout.fixed.horizontal,
@@ -175,47 +166,35 @@ screen.connect_signal("request::desktop_decoration", function(s)
 			wibox.widget.systray(),
 			clock,
 		},
-	}
+	})
 end)
 
--- ── Mouse bindings ────────────────────────────────────────────
-awful.mouse.append_global_mousebindings({
-	awful.button({}, 3, function()
-		awful.spawn(launcher)
-	end),
-	awful.button({}, 4, awful.tag.viewprev),
-	awful.button({}, 5, awful.tag.viewnext),
-})
-
--- ── Keybindings ───────────────────────────────────────────────
-awful.keyboard.append_global_keybindings({
-	-- 程式（對照 Hyprland）
+-- ── Global Bindings ───────────────────────────────────────────
+local globalkeys = gears.table.join(
+	-- 程式快捷鍵
 	awful.key({ modkey }, "q", function()
 		awful.spawn(terminal)
-	end, { description = "terminal", group = "launcher" }),
+	end),
 	awful.key({ modkey }, "e", function()
 		awful.spawn(filemanager)
-	end, { description = "file manager", group = "launcher" }),
+	end),
 	awful.key({ modkey }, "r", function()
 		awful.spawn(launcher)
-	end, { description = "launcher", group = "launcher" }),
+	end),
 	awful.key({ modkey }, "l", function()
 		awful.spawn("xscreensaver-command -lock")
-	end, { description = "lock", group = "launcher" }),
+	end),
 	awful.key({ modkey, "Shift" }, "e", function()
 		awful.spawn("wlogout")
-	end, { description = "logout", group = "launcher" }),
+	end),
 
 	-- 截圖
 	awful.key({}, "Print", function()
 		awful.spawn("scrot -e 'xclip -selection clipboard -t image/png < $f'")
-	end, { description = "screenshot", group = "screenshot" }),
-	awful.key({ modkey }, "Print", function()
-		awful.spawn("scrot ~/Pictures/Screenshots/%Y%m%d_%H%M%S.png")
-	end, { description = "screenshot to file", group = "screenshot" }),
+	end),
 	awful.key({ modkey, "Shift" }, "s", function()
 		awful.spawn("scrot -s -e 'xclip -selection clipboard -t image/png < $f'")
-	end, { description = "screenshot region", group = "screenshot" }),
+	end),
 
 	-- 音量
 	awful.key({}, "XF86AudioRaiseVolume", function()
@@ -228,22 +207,7 @@ awful.keyboard.append_global_keybindings({
 		awful.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
 	end),
 
-	-- WM
-	awful.key({ modkey }, "c", function()
-		if client.focus then
-			client.focus:kill()
-		end
-	end, { description = "close", group = "client" }),
-	awful.key({ modkey }, "v", function()
-		if client.focus then
-			client.focus.floating = not client.focus.floating
-		end
-	end, { description = "toggle floating", group = "client" }),
-	awful.key({ modkey }, "j", function()
-		awful.layout.inc(1)
-	end, { description = "next layout", group = "layout" }),
-
-	-- 焦點移動（對照 Hyprland 方向鍵）
+	-- 焦點與視窗移動
 	awful.key({ modkey }, "Left", function()
 		awful.client.focus.bydirection("left")
 	end),
@@ -257,158 +221,103 @@ awful.keyboard.append_global_keybindings({
 		awful.client.focus.bydirection("down")
 	end),
 
-	-- 視窗移動
 	awful.key({ modkey, "Shift" }, "Left", function()
 		awful.client.swap.bydirection("left")
 	end),
 	awful.key({ modkey, "Shift" }, "Right", function()
 		awful.client.swap.bydirection("right")
 	end),
-	awful.key({ modkey, "Shift" }, "Up", function()
-		awful.client.swap.bydirection("up")
-	end),
-	awful.key({ modkey, "Shift" }, "Down", function()
-		awful.client.swap.bydirection("down")
-	end),
 
-	-- 說明
-	awful.key({ modkey }, "F1", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
+	-- WM 控制
+	awful.key({ modkey }, "F1", hotkeys_popup.show_help),
+	awful.key({ modkey, "Control" }, "r", awesome.restart)
+)
 
-	-- Reload
-	awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
-})
-
--- tag 切換（Super+1~9，對照 Hyprland）
-awful.keyboard.append_global_keybindings({
-	awful.key({
-		modifiers = { modkey },
-		keygroup = "numrow",
-		description = "switch tag",
-		group = "tag",
-		on_press = function(index)
-			local t = awful.screen.focused().tags[index]
-			if t then
-				t:view_only()
+-- 數字鍵切換 Tag (1-9)
+for i = 1, 9 do
+	globalkeys = gears.table.join(
+		globalkeys,
+		awful.key({ modkey }, "#" .. i + 9, function()
+			local screen = awful.screen.focused()
+			local tag = screen.tags[i]
+			if tag then
+				tag:view_only()
 			end
-		end,
-	}),
-	awful.key({
-		modifiers = { modkey, "Shift" },
-		keygroup = "numrow",
-		description = "move to tag",
-		group = "tag",
-		on_press = function(index)
+		end),
+		awful.key({ modkey, "Shift" }, "#" .. i + 9, function()
 			if client.focus then
-				local t = client.focus.screen.tags[index]
-				if t then
-					client.focus:move_to_tag(t)
+				local tag = client.focus.screen.tags[i]
+				if tag then
+					client.focus:move_to_tag(tag)
 				end
 			end
-		end,
-	}),
-})
+		end)
+	)
+end
 
--- ── Client keybindings ────────────────────────────────────────
-client.connect_signal("request::default_keybindings", function()
-	awful.keyboard.append_client_keybindings({
-		awful.key({ modkey }, "f", function(c)
-			c.fullscreen = not c.fullscreen
-			c:raise()
-		end, { description = "fullscreen", group = "client" }),
-		awful.key({ modkey }, "m", function(c)
-			c.maximized = not c.maximized
-			c:raise()
-		end, { description = "maximize", group = "client" }),
-	})
-end)
+root.keys(globalkeys)
 
--- ── Client mouse ──────────────────────────────────────────────
-client.connect_signal("request::default_mousebindings", function()
-	awful.mouse.append_client_mousebindings({
-		awful.button({}, 1, function(c)
-			c:activate({ context = "mouse_click" })
-		end),
-		awful.button({ modkey }, 1, awful.mouse.client.move),
-		awful.button({ modkey }, 3, awful.mouse.client.resize),
-	})
-end)
+-- ── Client Bindings ───────────────────────────────────────────
+local clientkeys = gears.table.join(
+	awful.key({ modkey }, "f", function(c)
+		c.fullscreen = not c.fullscreen
+		c:raise()
+	end),
+	awful.key({ modkey }, "c", function(c)
+		c:kill()
+	end),
+	awful.key({ modkey }, "v", awful.client.floating.toggle),
+	awful.key({ modkey }, "m", function(c)
+		c.maximized = not c.maximized
+		c:raise()
+	end)
+)
 
--- ── Rules ─────────────────────────────────────────────────────
-ruled.client.connect_signal("request::rules", function()
-	ruled.client.append_rule({
-		id = "global",
+-- ── Rules (Awesome 4.3 語法修正) ───────────────────────────────
+awful.rules.rules = {
+	{
 		rule = {},
 		properties = {
+			border_width = beautiful.border_width,
+			border_color = beautiful.border_normal,
 			focus = awful.client.focus.filter,
 			raise = true,
+			keys = clientkeys,
 			screen = awful.screen.preferred,
 			placement = awful.placement.no_overlap + awful.placement.no_offscreen,
 		},
-	})
-
-	ruled.client.append_rule({
-		id = "floating",
+	},
+	{
 		rule_any = {
 			class = { "Claude", "feh", "Gimp" },
-			name = { "Event Tester" },
 			type = { "dialog" },
 		},
 		properties = { floating = true, placement = awful.placement.centered },
-	})
-
-	ruled.client.append_rule({
-		id = "claude",
+	},
+	{
 		rule = { class = "Claude" },
-		properties = {
-			floating = true,
-			width = 1000,
-			height = 750,
-			placement = awful.placement.centered,
-		},
-	})
+		properties = { width = 1000, height = 750 },
+	},
+}
+
+-- ── Signals ───────────────────────────────────────────────────
+client.connect_signal("manage", function(c)
+	if not awesome.startup then
+		awful.placement.no_offscreen(c)
+	end
 end)
 
--- ── 視窗標題欄 ────────────────────────────────────────────────
-client.connect_signal("request::titlebars", function(c)
-	local buttons = {
-		awful.button({}, 1, function()
-			c:activate({ context = "titlebar", action = "mouse_move" })
-		end),
-		awful.button({}, 3, function()
-			c:activate({ context = "titlebar", action = "mouse_resize" })
-		end),
-	}
+client.connect_signal("mouse::enter", function(c)
+	c:emit_signal("request::activate", "mouse_enter", { raise = false })
+end)
 
-	awful.titlebar(c, { size = 30, bg = colors.surface0 }).widget = {
-		{ -- 左：icon + title
-			awful.titlebar.widget.iconwidget(c),
-			buttons = buttons,
-			layout = wibox.layout.fixed.horizontal,
-		},
-		{
-			{ -- 標題
-				align = "center",
-				widget = awful.titlebar.widget.titlewidget(c),
-			},
-			buttons = buttons,
-			layout = wibox.layout.flex.horizontal,
-		},
-		{ -- 右：按鈕
-			awful.titlebar.widget.minimizebutton(c),
-			awful.titlebar.widget.maximizedbutton(c),
-			awful.titlebar.widget.closebutton(c),
-			layout = wibox.layout.fixed.horizontal,
-		},
-		layout = wibox.layout.align.horizontal,
-	}
+client.connect_signal("focus", function(c)
+	c.border_color = beautiful.border_focus
+end)
+client.connect_signal("unfocus", function(c)
+	c.border_color = beautiful.border_normal
 end)
 
 -- ── 自動啟動 ──────────────────────────────────────────────────
 awful.spawn.with_shell("fcitx5 -d")
 awful.spawn.with_shell("dunst")
-awful.spawn.with_shell("feh --bg-fill ~/wallpaper.png")
-
--- ── 焦點跟隨滑鼠 ─────────────────────────────────────────────
-client.connect_signal("mouse::enter", function(c)
-	c:activate({ context = "mouse_enter", raise = false })
-end)
