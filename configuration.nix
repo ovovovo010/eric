@@ -17,7 +17,6 @@
     ./root/packages/packages.nix
     ./root/stylix/stylix.nix
     ./root/mirror/mirror.nix
-    ./root/greetd/greetd.nix
     ./root/steam/steam.nix
     ./root/nushell/nushell.nix
     ./root/data/data.nix
@@ -40,6 +39,7 @@
     ./root/zsh/zsh.nix
     ./root/sched_ext/sched_ext.nix
     ./root/pipewire/pipewire.nix
+    ./root/sddm/sddm.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
