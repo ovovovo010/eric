@@ -14,8 +14,8 @@
         position = "top";
         height = 40;
         margin-top = 8;
-        margin-left = 0;
-        margin-right = 0;
+        margin-left = 8;
+        margin-right = 8;
         margin-bottom = 0;
         spacing = 12;
 
@@ -24,6 +24,9 @@
         "modules-right" = [
           "privacy"
           "idle_inhibitor"
+          "cpu"
+          "memory"
+          "temperature"
           "pulseaudio"
           "backlight"
           "battery"
@@ -174,30 +177,18 @@
 
         pulseaudio = {
           tooltip = false;
-          format = "  {volume}%";
-          "format-bluetooth" = " {volume}%";
-          "format-bluetooth-muted" = " {volume}%";
-          "format-muted" = "X {volume}%";
-          "format-source" = "{volume}% ";
-          "format-source-muted" = " ";
+          format = "{icon}{volume}%";
+          "format-bluetooth" = "{icon}{volume}%";
+          "format-bluetooth-muted" = "{icon}muted";
+          "format-muted" = "{icon}muted";
+          "format-source" = "{volume}%";
+          "format-source-muted" = "muted";
           "format-icons" = {
             headphone = "";
             phone = "";
             portable = "";
             car = "";
-            default = [
-              "░░░░░░░░░░"
-              "█░░░░░░░░░"
-              "██░░░░░░░░"
-              "███░░░░░░░"
-              "████░░░░░░"
-              "█████░░░░░"
-              "██████░░░░"
-              "███████░░░"
-              "████████░░"
-              "█████████░"
-              "██████████"
-            ];
+            default = [ "" "" "" ];
           };
           interval = 60;
           "on-click" = "pamixer --toggle-mute";
@@ -330,7 +321,7 @@
 
       #workspaces {
           background-color: #1e1e2e;
-          border-radius: 0px;
+          border-radius: 15px;
           padding: 0 15px 0 15px;
       }
 
@@ -397,14 +388,14 @@
       #scratchpad,
       #mpd {
           background-color: #1e1e2e;
-          border-radius: 0px;
+          border-radius: 15px;
           padding: 0 12px 0 12px;
       }
 
       #custom-vkeyboard {
           margin: 0px 0px 0px 0px;
           background-color: #1e1e2e;
-          border-radius: 0px;
+          border-radius: 15px;
           padding: 0 12px 0 12px;
       }
 
@@ -523,7 +514,7 @@
 
       #custom-power {
           background-color: #1e1e2e;
-          border-radius: 0px;
+          border-radius: 15px;
           padding: 0 15px 0 15px;
           font-size: 18px;
       }
@@ -538,7 +529,7 @@
 
       #custom-launcher {
           background-color: #1e1e2e;
-          border-radius: 0px;
+          border-radius: 15px;
           padding: 0 12px 0 12px;
           font-size: 18px;
       }
