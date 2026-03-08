@@ -24,9 +24,6 @@
         "modules-right" = [
           "privacy"
           "idle_inhibitor"
-          "cpu"
-          "memory"
-          "temperature"
           "pulseaudio"
           "backlight"
           "battery"
