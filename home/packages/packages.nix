@@ -73,6 +73,9 @@
     nnn
     broot
 
+    # notification client used by custom/notification module
+    swaync
+
     # 系統控制工具
     pamixer # 音量控制
     blueman # 藍牙管理 GUI
