@@ -29,6 +29,4 @@
     extraGroups = ["wheel"];
     packages = with pkgs; [];
   };
-
-  
 }
