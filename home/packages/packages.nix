@@ -60,7 +60,7 @@
     wget2
     age
     zbar
-    mousai
+    songrec
 
     # 桌面與 Wayland 工具
     rofi # 應用啟動器
