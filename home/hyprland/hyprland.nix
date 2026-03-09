@@ -25,6 +25,7 @@
         "mako"
         "hyprctl setcursor catppuccin-mocha-lavender-cursors 24"
         "waybar"
+        "electronmail"
       ];
 
       # WINDOWRULE
