@@ -9,11 +9,11 @@
   outputs = { self, nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
     in {
       homeConfigurations.user1 = home-manager.lib.homeManagerConfiguration {
-        inherit system;
+        inherit pkgs;
         modules = [ ./home.nix ];
-        pkgs = nixpkgs.legacyPackages.${system};
       };
     };
 }
