@@ -73,6 +73,7 @@
     yazi
     nnn
     broot
+    pipe-viewer
 
     # 系統控制工具
     pamixer # 音量控制
@@ -97,7 +98,7 @@
     gitkraken
     pavucontrol
     vscode
-    pipe-viewer
+    gtk-pipe-viewer
 
     # Nix / Git 輔助
     alejandra
