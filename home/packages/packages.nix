@@ -96,7 +96,6 @@
     electron-mail
     gitkraken
     pavucontrol
-    vscode
     freetube
     lollypop
 
