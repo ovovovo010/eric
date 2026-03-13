@@ -61,13 +61,6 @@
         use_smartcase_find = true;
       };
 
-      # ── 字型（顏色交給 Stylix） ───────────────────────────────────────────────
-      ui_font_family = "JetBrainsMono Nerd Font Mono";
-      ui_font_size = 14;
-      buffer_font_family = "JetBrainsMono Nerd Font Mono";
-      buffer_font_size = lib.mkForce 14;
-      buffer_line_height = "comfortable";
-
       # ── 編輯器行為 ────────────────────────────────────────────────────────────
       autosave = "on_focus_change";
       format_on_save = "on";
