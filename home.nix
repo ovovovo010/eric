@@ -17,7 +17,6 @@
     ./home/nixvim/nixvim.nix
     ./home/kitty/kitty.nix
     ./home/zed/zed.nix
-    ./home/emacs/emacs.nix
     ./home/wezterm/wezterm.nix
     ./home/qt/qt.nix
     ./home/gtk/gtk.nix
