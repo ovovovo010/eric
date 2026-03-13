@@ -83,9 +83,6 @@
         nov # 讀 epub 電子書
         elcord # Discord Rich Presence（開 Emacs 讓朋友看到）
         speed-type # Emacs 裡練打字速度
-        fireplace # 壁爐動畫（M-x fireplace）
-        snow # 下雪動畫（M-x snow）
-        hanoi # 河內塔動畫（M-x hanoi）
         matrix-client # Matrix 聊天室客戶端
         elfeed # RSS 閱讀器
         pomidor # 番茄鐘
