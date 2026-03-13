@@ -85,7 +85,6 @@
         speed-type # Emacs 裡練打字速度
         fireplace # 壁爐動畫（M-x fireplace）
         snow # 下雪動畫（M-x snow）
-        tetris # 俄羅斯方塊（M-x tetris）
         hanoi # 河內塔動畫（M-x hanoi）
         matrix-client # Matrix 聊天室客戶端
         elfeed # RSS 閱讀器
