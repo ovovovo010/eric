@@ -122,9 +122,14 @@
       ;; ── 字型 ────────────────────────────────────────────────────────────────
       (set-face-attribute 'default nil
         :font "JetBrainsMono Nerd Font Mono"
-        :height 140)
+        :height 110)
+      (set-face-attribute 'variable-pitch nil
+        :font "JetBrainsMono Nerd Font Mono"
+        :height 110)
 
       ;; ── Evil ────────────────────────────────────────────────────────────────
+      (setq evil-want-keybinding nil)
+      (setq evil-want-integration t)
       (require 'evil)
       (evil-mode 1)
       (require 'evil-collection)
@@ -201,7 +206,7 @@
       (require 'doom-modeline)
       (doom-modeline-mode 1)
       (setq doom-modeline-icon t)
-      (setq doom-modeline-height 28)
+      (setq doom-modeline-height 20)
 
       ;; ── rainbow-delimiters ───────────────────────────────────────────────────
       (require 'rainbow-delimiters)

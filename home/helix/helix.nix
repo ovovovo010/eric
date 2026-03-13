@@ -120,8 +120,6 @@
           "C-j" = "jump_view_down";
           "C-k" = "jump_view_up";
           "C-l" = "jump_view_right";
-          "]d" = "goto_next_diag";
-          "[d" = "goto_prev_diag";
           space = {
             "f" = "file_picker";
             "b" = "buffer_picker";
