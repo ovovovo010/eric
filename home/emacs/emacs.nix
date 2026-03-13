@@ -83,7 +83,6 @@
         nov # 讀 epub 電子書
         elcord # Discord Rich Presence（開 Emacs 讓朋友看到）
         speed-type # Emacs 裡練打字速度
-        matrix-client # Matrix 聊天室客戶端
         elfeed # RSS 閱讀器
         pomidor # 番茄鐘
         keycast # 顯示你正在按的鍵（直播用）
