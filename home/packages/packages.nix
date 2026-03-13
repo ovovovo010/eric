@@ -173,7 +173,6 @@
 
     # 編輯器補充 ⭐ 新增
     micro
-    zed-editor
     # 網路工具補充 ⭐ 新增
     wireshark # 網路封包分析
     nmap # 網路掃描
