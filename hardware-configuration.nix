@@ -14,7 +14,7 @@
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = ["nvidia"];
-  boot.initrd.kernelPackages = pkgs.linuxPackages_xanmod;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod;
   boot.extraModulePackages = [];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
