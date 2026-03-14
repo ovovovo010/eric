@@ -25,6 +25,10 @@
     tokei
     nix-output-monitor
     nvd
+    bbdown
+    aide
+    spotdl
+    lynis
     nix-tree
     nix-du
     nixpkgs-review
