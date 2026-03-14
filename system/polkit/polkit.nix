@@ -1,14 +1,14 @@
 {pkgs, ...}: {
   security.polkit.enable = true;
 
-  systemd.user.services.polkit-lxqt-agent = {
-    description = "LXQt Polkit Authentication Agent";
+  systemd.user.services.hyprpolkitagent = {
+    description = "Hyprland Polkit Authentication Agent";
     wantedBy = ["graphical-session.target"];
     wants = ["graphical-session.target"];
     after = ["graphical-session.target"];
     serviceConfig = {
       Type = "simple";
-      ExecStart = "${pkgs.lxqt.lxqt-policykit}/bin/lxqt-policykit-agent";
+      ExecStart = "${pkgs.hyprpolkitagent}/lib/hyprpolkitagent";
       Restart = "on-failure";
       RestartSec = 1;
     };
