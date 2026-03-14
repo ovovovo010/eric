@@ -7,7 +7,7 @@
   users.users.eric = {
     isNormalUser = true;
     shell = pkgs.nushell;
-    extraGroups = ["wheel" "networkmanager" "video" "input" "seat" "libvirtd" "kvm" "render"];
+    extraGroups = ["wheel" "networkmanager" "video" "input" "seat" "render"];
     # subuid/subgid for rootless containers (distrobox/podman)
     subUidRanges = [
       {

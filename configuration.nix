@@ -33,7 +33,6 @@
     ./system/lact/lact.nix
     ./system/ssh/ssh.nix
     ./system/distrobox/distrobox.nix
-    ./system/libvirtd/libvirtd.nix
     ./system/fish/fish.nix
     ./system/zsh/zsh.nix
     ./system/sched_ext/sched_ext.nix
