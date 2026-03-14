@@ -17,10 +17,11 @@
     extraCompatPackages = with pkgs; [
       proton-ge-bin
     ];
-    environment.sessionVariables = {
-      STEAM_COMPAT_DATA_PATH = "/mnt/data/steam";
-    };
   };
 
   programs.gamemode.enable = true; # ← system-level，套件由 root/packages.nix 提供
+
+  environment.sessionVariables = {
+    STEAM_COMPAT_DATA_PATH = "/mnt/data/steam";
+  };
 }
