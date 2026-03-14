@@ -1,13 +1,16 @@
-{ config, pkgs, lib, ... }:
-
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   colors = config.lib.stylix.colors.withHashtag;
-  
+
   # 安全地獲取圖標主題路徑
-  iconThemePath = 
-    if config.stylix ? iconTheme && config.stylix.iconTheme ? enable && config.stylix.iconTheme.enable 
+  iconThemePath =
+    if config.stylix ? iconTheme && config.stylix.iconTheme ? enable && config.stylix.iconTheme.enable
     then "${config.stylix.iconTheme.package}/share/icons/${config.stylix.iconTheme.dark}"
-    else "${pkgs.adwaita-icon-theme}/share/icons/Adwaita";  # 這裡修改了！
+    else "${pkgs.adwaita-icon-theme}/share/icons/Adwaita"; # 這裡修改了！
 
   layout = [
     {
@@ -97,8 +100,7 @@ let
       background-image: url("${iconThemePath}/symbolic/actions/system-shutdown-symbolic.svg");
     }
   '';
-in
-{
+in {
   home.file.".local/bin/lock" = {
     text = ''
       #!/bin/sh

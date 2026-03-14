@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     stylix = {
       url = "github:danth/stylix/release-25.11";
@@ -24,6 +26,14 @@
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+    noctalia-qs = {
+      url = "github:noctalia-dev/noctalia-qs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
@@ -52,6 +62,7 @@
           home-manager.sharedModules = [
             inputs.spicetify-nix.homeManagerModules.default
             nixvim.homeModules.nixvim
+            inputs.noctalia.homeModules.default
           ];
         }
       ];

@@ -101,7 +101,7 @@
       };
 
       misc = {
-        force_default_wallpaper = -1;
+        force_default_wallpaper = -3;
         disable_hyprland_logo = true;
       };
 

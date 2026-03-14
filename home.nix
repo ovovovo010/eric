@@ -12,6 +12,7 @@
     ./home/nushell/nushell.nix
     ./home/nushell/atuin.nix
     ./home/nushell/starship.nix
+    ./home/noctalia/noctalia.nix
     ./home/rofi/rofi.nix
     ./home/mako/mako.nix
     ./home/zen/zen.nix
