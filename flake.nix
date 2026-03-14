@@ -23,7 +23,7 @@
     };
     disko = {
       url = "github:nix-community/disko"; # ← 刪掉這行
-      disko.inputs.nixpkgs.follows = "nixpkgs"; # ← 還有這行
+      inputs.nixpkgs.follows = "nixpkgs"; # ← 還有這行
     };
   };
 
