@@ -21,10 +21,9 @@
       "exec-once" = [
         "fcitx5 -d"
         "swww-daemon"
+        "noctalia-shell"
         "swww img /etc/nixos/root/wallpaper.png"
-        "mako"
         "hyprctl setcursor catppuccin-mocha-lavender-cursors 24"
-        "waybar"
       ];
 
       # WINDOWRULE

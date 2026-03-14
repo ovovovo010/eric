@@ -13,8 +13,6 @@
     ./home/nushell/atuin.nix
     ./home/nushell/starship.nix
     ./home/noctalia/noctalia.nix
-    ./home/rofi/rofi.nix
-    ./home/mako/mako.nix
     ./home/zen/zen.nix
     ./home/nixvim/nixvim.nix
     ./home/kitty/kitty.nix
@@ -25,8 +23,6 @@
     ./home/spicetify/spicetify.nix
     ./home/obs/obs.nix
     ./home/lact/lact.nix
-    ./home/wlogout/wlogout.nix
-    ./home/hyprlock/hyprlock.nix
     ./home/yazi/yazi.nix
     ./home/stylix/stylix.nix
     ./home/stylix/blacklist.nix
