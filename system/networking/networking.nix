@@ -10,5 +10,4 @@
   security.auditd.enable = true;
   services.fail2ban.enable = true;
   programs.firejail.enable = true;
-  services.rkhunter.enable = true;
 }
