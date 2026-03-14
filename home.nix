@@ -14,6 +14,7 @@
     ./home/rofi/rofi.nix
     ./home/mako/mako.nix
     ./home/zen/zen.nix
+    ./home/fcitx5/fcitx5.nix
     ./home/nixvim/nixvim.nix
     ./home/kitty/kitty.nix
     ./home/zed/zed.nix
