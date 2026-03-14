@@ -36,6 +36,8 @@
       modules = [
         {nixpkgs.hostPlatform = "x86_64-linux";}
         ./configuration.nix
+        inputs.disko.nixosModules.disko # ← 加這行
+        ./disko.nix
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
         {
