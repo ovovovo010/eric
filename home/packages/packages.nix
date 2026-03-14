@@ -25,7 +25,6 @@
     tokei
     nix-output-monitor
     nvd
-    bbdown
     aide
     spotdl
     lynis
