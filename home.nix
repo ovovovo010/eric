@@ -8,6 +8,7 @@
     ./home/hyprland/hyprland.nix
     ./home/hypragent/hypragent.nix
     ./home/noctalia/noctalia-shell.nix
+    ./home/antigravity/antigravity.nix
     ./home/fonts/fonts.nix
     ./home/steam/steam.nix
     ./home/nushell/nushell.nix
