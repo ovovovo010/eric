@@ -1,5 +1,6 @@
 # root/sddm/sddm.nix
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   services.displayManager.sddm = {
     enable = true;
     theme = "catppuccin-mocha-mauve";
@@ -14,10 +15,10 @@
 
   environment.systemPackages = with pkgs; [
     (catppuccin-sddm.override {
-      flavor = "mocha";
+      flavor = "macchiato";
       font = "JetBrainsMono Nerd Font";
       fontSize = "12";
-      background = ./2026-03-15-150056_hyprshot.png;
+      background = ../stylix/mika-wallpaper.png;
       loginBackground = true;
     })
     bibata-cursors

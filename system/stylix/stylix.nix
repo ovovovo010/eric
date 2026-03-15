@@ -4,7 +4,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     inputs.stylix.nixosModules.stylix
   ];
@@ -13,10 +14,10 @@
     enable = true;
     enableReleaseChecks = false;
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
     polarity = "dark";
 
-    image = ./2026-03-15-150056_hyprshot.png;
+    image = ./mika-wallpaper.png;
 
     fonts = {
       monospace = {
