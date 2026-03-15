@@ -4,6 +4,6 @@
   ...
 }: {
   home.packages = [
-    inputs.noctalia.packages.${pkgs.system}.default
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }
