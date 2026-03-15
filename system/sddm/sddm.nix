@@ -1,13 +1,13 @@
 {pkgs, ...}: let
-  # Catppuccin Macchiato 配色
-  # Base: #24273a  Surface: #363a4f  Overlay: #494d64
-  # Pink: #f5bde6  Mauve: #c6a0f6   Text: #cad3f5
+  # 使用 "${...}" 語法將路徑強制轉換為字串，解決 generators 報錯
+  # 這樣既能讓圖片進入 /nix/store (解決權限)，又能滿足主題對字串格式的要求
+  mika-wallpaper = "${./system/sddm/mika-wallpaper.png}";
+
   sddm-astronaut = pkgs.sddm-astronaut.override {
     embeddedTheme = "astronaut";
     themeConfig = {
-      # 關鍵修正：移除引號，改用相對路徑。
-      # Nix 會自動將 ~/nixos/system/sddm/mika-wallpaper.png 複製到全域可讀的 /nix/store 中
-      Background = ./mika-wallpaper.png;
+      # 關鍵修正：使用轉換後的字串路徑
+      Background = mika-wallpaper;
 
       ScreenWidth = "2560";
       ScreenHeight = "1440";
@@ -28,12 +28,12 @@
       HeaderText = "";
 
       # Catppuccin Macchiato Pink 配色
-      MainColor = "#f5bde6"; # Pink — 主色、輸入框邊框
-      AccentColor = "#c6a0f6"; # Mauve — 強調色、按鈕
-      BackgroundColor = "#24273a"; # Base — 登入框背景
-      InputBackground = "#363a4f"; # Surface — 輸入框背景
-      InputColor = "#cad3f5"; # Text — 輸入文字
-      PlaceholderColor = "#6e738d"; # Overlay2 — placeholder
+      MainColor = "#f5bde6";
+      AccentColor = "#c6a0f6";
+      BackgroundColor = "#24273a";
+      InputBackground = "#363a4f";
+      InputColor = "#cad3f5";
+      PlaceholderColor = "#6e738d";
     };
   };
 in {
@@ -46,7 +46,7 @@ in {
       sddm-astronaut
       kdePackages.qtmultimedia
       kdePackages.qtsvg
-      kdePackages.qt5compat # 增加兼容性防止黑屏
+      kdePackages.qt5compat
     ];
   };
 }
