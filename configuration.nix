@@ -41,6 +41,7 @@
     ./system/sched_ext/sched_ext.nix
     ./system/pipewire/pipewire.nix
     ./system/sddm/sddm.nix
+    ./system/xdg/xdg.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
