@@ -3,7 +3,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     inputs.stylix.nixosModules.stylix
   ];
@@ -49,5 +50,7 @@
       package = pkgs.catppuccin-cursors.macchiatoPink;
       size = 24;
     };
+
+    targets.sddm.enable = false;
   };
 }

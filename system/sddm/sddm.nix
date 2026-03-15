@@ -1,9 +1,10 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   # 使用字串定義絕對路徑，Nix 不會把影片搬進 store，也不會影響 Git
   # ⚠️ 請將「你的用戶名」替換成實際的名稱
   mika-video = "/home/eric/Pictures/Wallpapers/live/Mika_(swimsuit).mp4";
 
-  sddm-astronaut = pkgs.sddm-astronaut.override {
+  sddm-astronaut-theme = pkgs.sddm-astronaut.override {
     embeddedTheme = "astronaut";
     themeConfig = {
       # --- 影片背景設定 ---
@@ -33,7 +34,8 @@
       PlaceholderColor = "#6e738d";
     };
   };
-in {
+in
+{
   services.displayManager.sddm = {
     enable = true;
     # 確保這裡的名稱與上面 override 的主題對應
@@ -42,7 +44,7 @@ in {
     wayland.enable = true;
 
     extraPackages = with pkgs; [
-      sddm-astronaut
+      sddm-astronaut-theme
       kdePackages.qtmultimedia
       kdePackages.qtsvg
       kdePackages.qt5compat
