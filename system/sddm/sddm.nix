@@ -1,7 +1,7 @@
 {pkgs, ...}: let
   # 使用 "${...}" 語法將路徑強制轉換為字串，解決 generators 報錯
   # 這樣既能讓圖片進入 /nix/store (解決權限)，又能滿足主題對字串格式的要求
-  mika-wallpaper = "${./system/sddm/mika-wallpaper.png}";
+  mika-wallpaper = "${./mika-wallpaper.png}";
 
   sddm-astronaut = pkgs.sddm-astronaut.override {
     embeddedTheme = "astronaut";
