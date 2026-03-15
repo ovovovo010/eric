@@ -9,24 +9,6 @@
   # 注意：系統層級 (root/stylix.nix) 已經設定了 stylix 主題和字體
   # 這裡只做 home-specific 的配置
 
-  # GTK 配置 (包含 icon theme)
-  gtk = {
-    enable = true;
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-  };
-
-  # Qt 配置
-  qt = {
-    enable = true;
-    platformTheme.name = "kvantum";
-    style.name = "kvantum";
-  };
-
-  # Kvantum 配置
-
   # qt5ct 配置
   home.file.".config/qt5ct/qt5ct.conf".text = ''
     [Appearance]
