@@ -5,7 +5,7 @@
   sddm-astronaut = pkgs.sddm-astronaut.override {
     embeddedTheme = "astronaut";
     themeConfig = {
-      Background = ../stylix/mika-wallpaper.png;
+      Background = ./mika-wallpaper.png;
       ScreenWidth = "2560";
       ScreenHeight = "1440";
 
@@ -25,13 +25,13 @@
       HeaderText = "";
 
       # Catppuccin Macchiato Pink 配色
-      MainColor = "#f5bde6";          # Pink — 主色、輸入框邊框
-      AccentColor = "#c6a0f6";        # Mauve — 強調色、按鈕
-      BackgroundColor = "#24273a";    # Base — 登入框背景
-      InputBackground = "#363a4f";    # Surface — 輸入框背景
-      InputColor = "#cad3f5";         # Text — 輸入文字
-      PlaceholderColor = "#6e738d";   # Overlay2 — placeholder
-      IconColor = "#f5bde6";          # Pink — 圖示
+      MainColor = "#f5bde6"; # Pink — 主色、輸入框邊框
+      AccentColor = "#c6a0f6"; # Mauve — 強調色、按鈕
+      BackgroundColor = "#24273a"; # Base — 登入框背景
+      InputBackground = "#363a4f"; # Surface — 輸入框背景
+      InputColor = "#cad3f5"; # Text — 輸入文字
+      PlaceholderColor = "#6e738d"; # Overlay2 — placeholder
+      IconColor = "#f5bde6"; # Pink — 圖示
     };
   };
 in {
