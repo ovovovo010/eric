@@ -22,7 +22,7 @@
         "fcitx5 -d"
         "noctalia-shell"
         "hyprctl setcursor catppuccin-mocha-lavender-cursors 24"
-        "mpvpaper -v -o '*' ~/Pictures/Wallpapers/live/Mika_(swimsuit).mp4"
+        "linux-wallpaperengine --assets-dir /mnt/data/SteamLibrary/steamapps/common/wallpaper_engine/assets --screen-root DP-6 --volume 100 /mnt/data/SteamLibrary/steamapps/workshop/content/431960/3537678022"
       ];
 
       # WINDOWRULE
