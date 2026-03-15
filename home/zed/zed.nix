@@ -41,9 +41,23 @@
 
     userSettings = {
       # ── AI 補全（Supermaven） ────────────────────────────────────────────────
-      # 第一次開啟後執行 `supermaven: sign in` 登入，完全免費
       edit_predictions = {
         mode = "eager";
+      };
+
+      # ── Ollama 本地 AI（qwen2.5-coder:7b） ──────────────────────────────────
+      assistant = {
+        version = "2";
+        default_model = {
+          provider = "ollama";
+          model = "qwen2.5-coder:7b";
+        };
+      };
+
+      language_models = {
+        ollama = {
+          api_url = "http://127.0.0.1:11434";
+        };
       };
 
       # ── 圖示主題 ─────────────────────────────────────────────────────────────
@@ -67,13 +81,13 @@
       soft_wrap = "editor_width";
       show_whitespaces = "selection";
       cursor_blink = false;
-      relative_line_numbers = true; # vim 使用者必備
+      relative_line_numbers = true;
 
       # ── 縮排導引 ─────────────────────────────────────────────────────────────
       indent_guides = {
         enabled = true;
         line_width = 1;
-        coloring = "indent_aware"; # 不同縮排層次不同顏色
+        coloring = "indent_aware";
       };
 
       # ── Inlay hints ──────────────────────────────────────────────────────────
