@@ -159,7 +159,6 @@
     xwayland-satellite
 
     # 主題相關 ⭐ 新增
-    papirus-icon-theme # 圖標主題
     libsForQt5.qt5ct # Qt5 配置工具
     libsForQt5.qtstyleplugins # Qt5 風格插件
 
