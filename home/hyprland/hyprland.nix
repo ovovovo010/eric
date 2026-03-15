@@ -22,15 +22,20 @@
         "fcitx5 -d"
         "noctalia-shell"
         "hyprctl setcursor catppuccin-mocha-lavender-cursors 24"
-        "linux-wallpaperengine --assets-dir /mnt/data/SteamLibrary/steamapps/common/wallpaper_engine/assets --screen-root DP-6 --volume 100 /mnt/data/SteamLibrary/steamapps/workshop/content/431960/3537678022"
+        "exec-once = linux-wallpaperengine --assets-dir /mnt/data/SteamLibrary/steamapps/common/wallpaper_engine/assets --screen-root DP-6 /mnt/data/SteamLibrary/steamapps/workshop/content/431960/3492627662"
+        "exec-once = ~/.config/hypr/scripts/wallpaper-audio.sh"
       ];
-
-      # WINDOWRULE
-      windowrulev2 = [
-      ];
-
-      # LOOK AND FEEL
-      general = {
+  windowrulev2 = float, class:^(linux-wallpaperengine)$
+  windowrulev2 = pin, class:^(linux-wallpaperengine)$
+  windowrulev2 = size 100% 100%, class:^(linux-wallpaperengine)$
+  windowrulev2 = move 0 0, class:^(linux-wallpaperengine)$
+  windowrulev2 = noborder, class:^(linux-wallpaperengine)$
+  windowrulev2 = noshadow, class:^(linux-wallpaperengine)$
+  windowrulev2 = noblur, class:^(linux-wallpaperengine)$
+  windowrulev2 = noanim, class:^(linux-wallpaperengine)$
+  windowrulev2 = nofocus, class:^(linux-wallpaperengine)$
+  windowrulev2 = immediate, class:^(linux-wallpaperengine)$
+        general = {
         gaps_in = 5;
         gaps_out = 20;
         border_size = 3;
