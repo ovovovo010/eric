@@ -5,7 +5,10 @@
   sddm-astronaut = pkgs.sddm-astronaut.override {
     embeddedTheme = "astronaut";
     themeConfig = {
-      Background = "/etc/nixos/system/sddm/mika-wallpaper.png";
+      # 關鍵修正：移除引號，改用相對路徑。
+      # Nix 會自動將 ~/nixos/system/sddm/mika-wallpaper.png 複製到全域可讀的 /nix/store 中
+      Background = ./mika-wallpaper.png;
+
       ScreenWidth = "2560";
       ScreenHeight = "1440";
 
@@ -31,24 +34,19 @@
       InputBackground = "#363a4f"; # Surface — 輸入框背景
       InputColor = "#cad3f5"; # Text — 輸入文字
       PlaceholderColor = "#6e738d"; # Overlay2 — placeholder
-      IconColor = "#f5bde6"; # Pink — 圖示
     };
   };
 in {
   services.displayManager.sddm = {
     enable = true;
-    theme = "sddm-astronaut-theme";
+    theme = "astronaut";
     package = pkgs.kdePackages.sddm;
-    extraPackages = [
+    wayland.enable = true;
+    extraPackages = with pkgs; [
       sddm-astronaut
-      pkgs.kdePackages.qtmultimedia
+      kdePackages.qtmultimedia
+      kdePackages.qtsvg
+      kdePackages.qt5compat # 增加兼容性防止黑屏
     ];
-    settings = {
-      Theme = {
-        Font = "JetBrainsMono Nerd Font";
-      };
-    };
   };
-
-  environment.systemPackages = [sddm-astronaut];
 }
