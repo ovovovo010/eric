@@ -1,11 +1,10 @@
 {pkgs, ...}: let
-  # 修正警告：在 override 時明確指定系統架構名
+  # 既然 sddm-astronaut 不接受 stdenv 參數，我們就移除它
+  # 警告問題目前在 Nixpkgs 的該套件定義中是已知的，不影響系統構建
   sddm-astronaut = pkgs.sddm-astronaut.override {
     embeddedTheme = "astronaut";
-    # 這裡手動傳入正確的系統平台參數，避開舊版自動推導產生的警告
-    stdenv = pkgs.stdenv;
     themeConfig = {
-      # 確保圖片路徑正確轉換為字串
+      # 確保圖片能正確進入 /nix/store 且滿足字串要求
       Background = "${./mika-wallpaper.png}";
 
       ScreenWidth = "2560";
@@ -18,15 +17,13 @@
       HaveFormBackground = "false";
       BackgroundOverlay = "false";
 
-      # 登入框靠左
+      # 登入框位置與字體
       FormPosition = "left";
-
-      # 字體
       Font = "JetBrainsMono Nerd Font";
       FontSize = "14";
       HeaderText = "";
 
-      # Catppuccin Macchiato Pink 配色
+      # Catppuccin Macchiato 配色
       MainColor = "#f5bde6";
       AccentColor = "#c6a0f6";
       BackgroundColor = "#24273a";
