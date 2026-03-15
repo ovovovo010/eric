@@ -1,5 +1,6 @@
 # home/nushell/nushell.nix
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nushell = {
     enable = true;
 
@@ -198,7 +199,7 @@
       alias gl   = git log --oneline --graph
       alias gs   = git status
       alias lg   = lazygit
-      alias ng   = /home/eric/nixos/rebuild.sh
+      alias ng   = rebuild.sh
 
       def mkcd [dir: string] {
         mkdir $dir
