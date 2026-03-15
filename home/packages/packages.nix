@@ -23,6 +23,7 @@
     dogdns
     linux-wallpaperengine
     bandwhich
+    antigravity-fhs
     tokei
     nix-output-monitor
     mpvpaper

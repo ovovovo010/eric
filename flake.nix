@@ -35,10 +35,6 @@
       url = "github:noctalia-dev/noctalia-qs";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    antigravity-nix = {
-      url = "github:jacopone/antigravity-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     simple-wallpaper-engine = {
       url = "github:Maxnights/simple-linux-wallpaperengine-gui";
       inputs.nixpkgs.follows = "nixpkgs";
