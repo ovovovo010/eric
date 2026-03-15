@@ -12,6 +12,7 @@
     ./system/btrfs/btrfs.nix
     ./system/boot/boot.nix
     ./system/networking/networking.nix
+    ./system/stylix/blacklist.nix
     ./system/sudo/sudo.nix
     ./system/locale/locale.nix
     ./system/audio/audio.nix
