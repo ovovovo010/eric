@@ -5,7 +5,7 @@
   sddm-astronaut = pkgs.sddm-astronaut.override {
     embeddedTheme = "astronaut";
     themeConfig = {
-      Background = /etc/nixos/system/sddm/mika-wallpaper.png;
+      Background = "/etc/nixos/system/sddm/mika-wallpaper.png";
       ScreenWidth = "2560";
       ScreenHeight = "1440";
 
