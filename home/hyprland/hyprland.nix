@@ -22,7 +22,7 @@
         "fcitx5 -d"
         "noctalia-shell"
         "hyprctl setcursor catppuccin-mocha-lavender-cursors 24"
-        "mpvpaper -f -o 'loop volume=30' '*' /home/eric/Pictures/Wallpapers/live/Mika_(swimsuit).mp4"
+        "mpvpaper -v -o '*' ~/Pictures/Wallpapers/live/Mika_(swimsuit).mp4"
       ];
 
       # WINDOWRULE

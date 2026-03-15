@@ -21,6 +21,7 @@
     duf
     curlie
     dogdns
+    linux-wallpaperengine
     bandwhich
     tokei
     nix-output-monitor
