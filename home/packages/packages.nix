@@ -158,7 +158,7 @@
     chafa
     progress
     most
-
+    nodejs
     xwayland-satellite
 
     # 主題相關 ⭐ 新增

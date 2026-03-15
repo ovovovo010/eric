@@ -58,6 +58,7 @@
         ./disko.nix
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
+        inputs.nix-openclaw.nixosModules.openclaw-gateway
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
