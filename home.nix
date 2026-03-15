@@ -12,7 +12,6 @@
     ./home/nushell/nushell.nix
     ./home/nushell/atuin.nix
     ./home/nushell/starship.nix
-    ./home/noctalia/noctalia.nix
     ./home/zen/zen.nix
     ./home/nixvim/nixvim.nix
     ./home/kitty/kitty.nix

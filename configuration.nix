@@ -6,6 +6,8 @@
 }: {
   imports = [
     ./system/hardware/hardware-configuration.nix
+    ./system/system-boot/systemd-boot.nix
+    ./system/plymouth/plymouth.nix
     ./system/fcitx5/fcitx5.nix
     ./system/btrfs/btrfs.nix
     ./system/boot/boot.nix
