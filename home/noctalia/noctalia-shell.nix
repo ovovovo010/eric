@@ -8,7 +8,7 @@
         useWallpaperColors = true;
       };
       bar = {
-        backgroundOpacity = 0.8;
+        backgroundOpacity = lib.mkForce 0.8;
         floating = true;
       };
     };
