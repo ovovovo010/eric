@@ -20,7 +20,7 @@
     dust
     duf
     curlie
-    brave
+    google-chrome
     linux-wallpaperengine
     bandwhich
     antigravity-fhs
