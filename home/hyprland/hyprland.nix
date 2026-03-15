@@ -33,9 +33,9 @@
       general = {
         gaps_in = 5;
         gaps_out = 20;
-        border_size = 2;
-        "col.active_border" = lib.mkForce "rgba(98c37eee) rgba(9fd3e2ee) rgba(b4a0ffee) 45deg";
-        "col.inactive_border" = lib.mkForce "rgba(595959aa)";
+        border_size = 3;
+        "col.active_border" = lib.mkForce "rgba(f5bde6ee) rgba(c6a0f6ee) rgba(b7bdf8ee) 45deg";
+        "col.inactive_border" = lib.mkForce "rgba(6e738daa)";
         resize_on_border = false;
         allow_tearing = false;
         layout = "dwindle";
