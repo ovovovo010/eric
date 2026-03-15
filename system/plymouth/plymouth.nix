@@ -1,7 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   boot.plymouth = {
     enable = true;
-    theme = "catppuccin-mocha";
+    theme = lib.mkForce "catppuccin-mocha";
     themePackages = [pkgs.catppuccin-plymouth];
   };
 }
