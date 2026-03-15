@@ -1,8 +1,9 @@
 # root/sddm/sddm.nix
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   services.displayManager.sddm = {
     enable = true;
-    theme = "catppuccin-mocha-mauve";
+    theme = "catppuccin-macchiato-pink";
     package = pkgs.kdePackages.sddm;
 
     settings = {
@@ -15,9 +16,10 @@
   environment.systemPackages = with pkgs; [
     (catppuccin-sddm.override {
       flavor = "macchiato";
+      accent = "pink";
       font = "JetBrainsMono Nerd Font";
       fontSize = "12";
-      background = ./mika-wallpaper.png;
+      background = ../stylix/mika-wallpaper.png;
       loginBackground = true;
     })
   ];
