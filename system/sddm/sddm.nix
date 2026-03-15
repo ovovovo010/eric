@@ -1,13 +1,12 @@
 {pkgs, ...}: let
-  # 使用 "${...}" 語法將路徑強制轉換為字串，解決 generators 報錯
-  # 這樣既能讓圖片進入 /nix/store (解決權限)，又能滿足主題對字串格式的要求
-  mika-wallpaper = "${./mika-wallpaper.png}";
-
+  # 修正警告：在 override 時明確指定系統架構名
   sddm-astronaut = pkgs.sddm-astronaut.override {
     embeddedTheme = "astronaut";
+    # 這裡手動傳入正確的系統平台參數，避開舊版自動推導產生的警告
+    stdenv = pkgs.stdenv;
     themeConfig = {
-      # 關鍵修正：使用轉換後的字串路徑
-      Background = mika-wallpaper;
+      # 確保圖片路徑正確轉換為字串
+      Background = "${./mika-wallpaper.png}";
 
       ScreenWidth = "2560";
       ScreenHeight = "1440";
