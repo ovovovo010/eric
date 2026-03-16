@@ -23,7 +23,6 @@
     google-chrome
     linux-wallpaperengine
     bandwhich
-    antigravity-fhs
     tokei
     nixfmt-rfc-style
     nix-output-monitor
@@ -102,6 +101,8 @@
     pavucontrol
     freetube
     lollypop
+    libreoffice
+    antigravity-fhs
 
     # Nix / Git 輔助
     alejandra

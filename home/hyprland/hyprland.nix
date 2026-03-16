@@ -2,8 +2,7 @@
   pkgs,
   lib,
   ...
-}:
-{
+}: {
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -23,8 +22,6 @@
         "fcitx5 -d"
         "noctalia-shell"
         "hyprctl setcursor catppuccin-mocha-lavender-cursors 24"
-        "linux-wallpaperengine --assets-dir /mnt/data/SteamLibrary/steamapps/common/wallpaper_engine/assets --screen-root DP-6 ~/Pictures/Wallpapers/live/Mika_(swimsuit).mp4"
-        "~/.config/hypr/scripts/wallpaper-audio.sh"
       ];
       windowrulev2 = [
         "float, class:^(linux-wallpaperengine)$"
