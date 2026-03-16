@@ -43,6 +43,11 @@
       url = "github:jacopone/antigravity-nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    niri-nix = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs = {
@@ -71,8 +76,9 @@
             inputs.spicetify-nix.homeManagerModules.default
             nixvim.homeModules.nixvim
             inputs.noctalia.homeModules.default
+            inputs.niri-nix.homeModules.niri
             inputs.simple-wallpaper-engine.homeManagerModules.default
-            ({ pkgs, ... }: {
+            ({pkgs, ...}: {
               home.packages = [
                 inputs.antigravity-nix.packages.x86_64-linux.default
               ];
