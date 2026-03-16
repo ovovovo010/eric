@@ -80,6 +80,7 @@
           "windows, 1, 5, jelly"
           "windowsIn, 1, 5, jelly, popin 80%"
           "windowsOut, 1, 5, jelly, popin 80%"
+          "windowsMove, 1, 5, jelly"
           "fadeIn, 1, 1.73, almostLinear"
           "fadeOut, 1, 1.46, almostLinear"
           "fade, 1, 3.03, quick"
@@ -107,6 +108,7 @@
       misc = {
         force_default_wallpaper = -3;
         disable_hyprland_logo = true;
+        animate_mouse_windowdragging = true;
       };
 
       # INPUT
@@ -160,6 +162,11 @@
         "$mainMod SHIFT, 8, movetoworkspace, 8"
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
+      ];
+
+      bindm = [
+        "$mainMod, mouse:272, movewindow"
+        "$mainMod, mouse:273, resizewindow"
       ];
     };
   };
