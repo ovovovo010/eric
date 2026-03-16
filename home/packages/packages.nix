@@ -102,7 +102,6 @@
     freetube
     lollypop
     libreoffice
-    antigravity-fhs
 
     # Nix / Git 輔助
     alejandra
