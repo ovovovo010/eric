@@ -150,7 +150,6 @@
     gnome-themes-extra
     adwaita-qt
     adwaita-icon-theme
-    papirus-icon-theme
     lxappearance
 
     # 額外工具與 GUI / WM
