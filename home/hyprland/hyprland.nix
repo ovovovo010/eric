@@ -71,33 +71,30 @@
         enabled = "yes";
 
         bezier = [
-          # ── 極致果凍主曲線 ── 強 overshoot + 多段回彈
-          "jellyExtreme, 0.22, 1.05, 0.36, 1.55" # 超強回彈，落地會多抖
-          "superBounce, 0.175, 0.885, 0.32, 1.95" # 彈跳兩三次，像果凍落地
-          "dragJelly, 0.34, 1.56, 0.64, 1.35" # 拖動專用：明顯拉扯 + 晃動回彈
-          "popExtreme, 0.05, 0.95, 0.10, 1.25" # popin 專用，極端彈出
-          "easeOutQuint, 0.23, 1, 0.32, 1" # 保險平滑
+          "crispBounce, 0.175, 0.885, 0.32, 1.275" # 標準 overshoot，但幅度控制好，不太黏
+          "snappyPop, 0.34, 1.56, 0.64, 1.0" # 快速彈出，無多餘晃
+          "sharpDrag, 0.25, 0.46, 0.45, 0.94" # 拖動專用：快進 + 短促回彈
+          "quickEase, 0.4, 0, 0.2, 1" # 通用快曲線
         ];
 
         animation = [
-          # 視窗出現：從超小 → 彈跳出來 + 多震 + 撞擊感
-          "windows, 1, 7, jellyExtreme"
-          "windowsIn, 1, 9, superBounce, popin 65%" # 65% 從極小彈出，超明顯多彈
-          "windowsOut, 1, 4, linear, popin 80%"
+          "windows, 1, 5, crispBounce"
+          "windowsIn, 1, 6, snappyPop, popin 85%" # 85% 從很小彈出，超清脆
+          "windowsOut, 1, 3, quickEase, popin 90%"
 
-          # 拖動 / 移動：最強果凍拉扯 + 晃動回彈（核心！）
-          "windowsMove, 1, 7, dragJelly" # 拖動時拉長 → 猛彈回 → 小晃
+          # 拖動：快拉 → 脆彈回（明顯但不黏）
+          "windowsMove, 1, 4, sharpDrag" # 拖動回彈短促有力
 
-          # 其他元素加強一致果凍感
-          "fadeIn, 1, 4, popExtreme"
-          "fadeOut, 1, 3.5, linear"
-          "fade, 1, 4, easeOutQuint"
-          "border, 1, 6, jellyExtreme"
-          "layers, 1, 5, jellyExtreme"
-          "layersIn, 1, 7, superBounce"
-          "workspaces, 1, 7, jellyExtreme"
-          "workspacesIn, 1, 8, superBounce"
-          "workspacesOut, 1, 6, jellyExtreme"
+          # 其他：整體加速，保持一致清脆
+          "fadeIn, 1, 3, snappyPop"
+          "fadeOut, 1, 2.5, quickEase"
+          "fade, 1, 3, quickEase"
+          "border, 1, 4, crispBounce"
+          "layers, 1, 4, crispBounce"
+          "layersIn, 1, 5, snappyPop"
+          "workspaces, 1, 5, crispBounce"
+          "workspacesIn, 1, 6, snappyPop"
+          "workspacesOut, 1, 4, quickEase"
         ];
       };
 
