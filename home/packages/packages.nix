@@ -9,10 +9,13 @@
     ripgrep
     unzip
     nil
+    nixd
     nixpkgs-fmt
     gh
     tree
     zig
+    grim
+    slurp
     bat
     zoxide
     jq
