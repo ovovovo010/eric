@@ -37,16 +37,16 @@ in {
 
       # 注意：請將外層的變數名稱從 windowrulev2 改為 windowrule
       windowrule = [
-        "match:class ^(linux-wallpaperengine)$, float 1"
-        "match:class ^(linux-wallpaperengine)$, pin 1"
+        "match:class ^(linux-wallpaperengine)$, float on"
+        "match:class ^(linux-wallpaperengine)$, pin on"
         "match:class ^(linux-wallpaperengine)$, size 100% 100%"
         "match:class ^(linux-wallpaperengine)$, move 0 0"
-        "noborder, ^(linux-wallpaperengine)$" # 修正這裡
-        "noshadow, ^(linux-wallpaperengine)$" # 修正這裡
-        "noblur, ^(linux-wallpaperengine)$" # 修正這裡
-        "noanim, ^(linux-wallpaperengine)$" # 修正這裡
-        "nofocus, ^(linux-wallpaperengine)$" # 修正這裡
-        "immediate, ^(linux-wallpaperengine)$"
+        "match:class ^(linux-wallpaperengine)$, noborder on"
+        "match:class ^(linux-wallpaperengine)$, no_shadow on"
+        "match:class ^(linux-wallpaperengine)$, no_blur on"
+        "match:class ^(linux-wallpaperengine)$, no_anim on"
+        "match:class ^(linux-wallpaperengine)$, no_focus on"
+        "match:class ^(linux-wallpaperengine)$, immediate on"
       ];
       general = {
         gaps_in = 5;
