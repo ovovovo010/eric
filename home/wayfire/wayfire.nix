@@ -26,10 +26,12 @@
     "${mainMod}, 0, vswitch, workspace_10"
     "${mainMod} SHIFT, 0, vswitch, move_window_to_workspace_10"
   ];
+  systemd.user.services.wf-panel.enable = false;
+  systemd.user.services.wayfire-shell.enable = false;
 in {
   home.file.".config/wayfire.ini".text = ''
     [core]
-    plugins = alpha animate autostart command cube decoration expo fast-switcher fisheye foreign-toplevel invert move oswitch place resize session-lock shortcuts-inhibit switcher vswitch  window-rules wm-actions wobbly wrot zoom simple-tile
+    plugins = alpha animate autostart command cube decoration fast-switcher fisheye foreign-toplevel invert move oswitch place resize session-lock shortcuts-inhibit switcher vswitch  window-rules wm-actions wobbly wrot zoom simple-tile
     preferred_decoration_mode = client
     vwidth = 10
     vheight = 1
@@ -138,8 +140,6 @@ in {
     with_win_left = <ctrl> <${mainMod}> SHIFT KEY_LEFT
     with_win_right = <ctrl> <${mainMod}> SHIFT KEY_RIGHT
 
-    [expo]
-    toggle = <${mainMod}> KEY_E
 
   '';
 }
