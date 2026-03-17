@@ -48,6 +48,11 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs = {
@@ -67,6 +72,7 @@
         ./disko.nix
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
+        inputs.hyprland.nixosModules.default
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
@@ -78,6 +84,7 @@
             inputs.noctalia.homeModules.default
             inputs.niri-nix.homeModules.niri
             inputs.simple-wallpaper-engine.homeManagerModules.default
+            inputs.hyprland.homeManagerModules.hyprland
             ({pkgs, ...}: {
               home.packages = [
                 inputs.antigravity-nix.packages.x86_64-linux.default

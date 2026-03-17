@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   wayland.windowManager.hyprland = {
@@ -53,12 +54,14 @@
         rounding = 20;
         active_opacity = 0.8;
         inactive_opacity = 0.6;
+        
         shadow = {
           enabled = true;
           range = 15;
           render_power = 5;
           color = lib.mkForce "rgba(1a1a1aee)";
         };
+
         blur = {
           enabled = true;
           size = 13;
@@ -71,21 +74,17 @@
         enabled = "yes";
 
         bezier = [
-          "crispBounce, 0.175, 0.885, 0.32, 1.275" # 標準 overshoot，但幅度控制好，不太黏
-          "snappyPop, 0.34, 1.56, 0.64, 1.0" # 快速彈出，無多餘晃
-          "sharpDrag, 0.25, 0.46, 0.45, 0.94" # 拖動專用：快進 + 短促回彈
-          "quickEase, 0.4, 0, 0.2, 1" # 通用快曲線
+          "crispBounce, 0.175, 0.885, 0.32, 1.275"
+          "snappyPop, 0.34, 1.56, 0.64, 1.0"
+          "sharpDrag, 0.25, 0.46, 0.45, 0.94"
+          "quickEase, 0.4, 0, 0.2, 1"
         ];
 
         animation = [
           "windows, 1, 5, crispBounce"
-          "windowsIn, 1, 6, snappyPop, popin 85%" # 85% 從很小彈出，超清脆
+          "windowsIn, 1, 6, snappyPop, popin 85%"
           "windowsOut, 1, 3, quickEase, popin 90%"
-
-          # 拖動：快拉 → 脆彈回（明顯但不黏）
-          "windowsMove, 1, 4, sharpDrag" # 拖動回彈短促有力
-
-          # 其他：整體加速，保持一致清脆
+          "windowsMove, 1, 4, sharpDrag"
           "fadeIn, 1, 3, snappyPop"
           "fadeOut, 1, 2.5, quickEase"
           "fade, 1, 3, quickEase"
@@ -104,15 +103,19 @@
       };
 
       master = {
-        new_status = "master";
+        new_on_top = true;
       };
 
       misc = {
         force_default_wallpaper = -3;
         disable_hyprland_logo = true;
-        animate_mouse_windowdragging = true; # 滑鼠拖動時有動畫
-        enable_swallow = true; # 加強拖動回饋
+        enable_swallow = true;
         swallow_regex = "^(kitty|Alacritty|wezterm)$";
+      };
+
+      cursor = {
+        no_hardware_cursors = false;
+        enable_hyprcursor = true;
       };
 
       # INPUT

@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./system/hardware/hardware-configuration.nix
     ./system/system-boot/systemd-boot.nix
@@ -46,7 +47,12 @@
     ./system/xdg/xdg.nix
   ];
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+  };
 
   nixpkgs.config.allowUnfree = true;
 
