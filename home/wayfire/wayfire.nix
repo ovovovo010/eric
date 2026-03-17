@@ -29,7 +29,7 @@
 in {
   home.file.".config/wayfire.ini".text = ''
     [core]
-    plugins = alpha animate autostart command cube decoration expo fast-switcher fisheye foreign-toplevel grid gtk-shell idle invert move oswitch place resize session-lock shortcuts-inhibit switcher vswitch  window-rules wm-actions wobbly wrot zoom simple-tile
+    plugins = alpha animate autostart command cube decoration expo fast-switcher fisheye foreign-toplevel invert move oswitch place resize session-lock shortcuts-inhibit switcher vswitch  window-rules wm-actions wobbly wrot zoom simple-tile
     preferred_decoration_mode = client
     vwidth = 10
     vheight = 1
@@ -39,7 +39,6 @@ in {
     0_env = dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XAUTHORITY
     fcitx5 = fcitx5 -d
     noctalia = noctalia-shell
-    cursor = hyprctl setcursor catppuccin-mocha-lavender-cursors 24
 
     [command]
     binding_terminal = <${mainMod}> KEY_Q
@@ -142,7 +141,5 @@ in {
     [expo]
     toggle = <${mainMod}> KEY_E
 
-    [wayfire-shell]
-    toggle_menu = <${mainMod}>
   '';
 }
