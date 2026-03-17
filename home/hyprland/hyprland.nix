@@ -35,12 +35,19 @@ in {
         "hyprctl setcursor catppuccin-mocha-lavender-cursors 24"
       ];
 
-      # Hyprland 0.53+ 全新 windowrule 語法
-      # 已廢棄舊版 windowrulev2 的多行寫法，現可利用 match: 將所有屬性優雅地合併為單行
+      # 注意：請將外層的變數名稱從 windowrulev2 改為 windowrule
       windowrule = [
-        "float 1, pin 1, size 100% 100%, move 0 0, border 0, shadow 0, blur 0, animation none, focus 0, immediate 1, match:class ^(linux-wallpaperengine)$"
+        "match:class ^(linux-wallpaperengine)$, float 1"
+        "match:class ^(linux-wallpaperengine)$, pin 1"
+        "match:class ^(linux-wallpaperengine)$, size 100% 100%"
+        "match:class ^(linux-wallpaperengine)$, move 0 0"
+        "match:class ^(linux-wallpaperengine)$, no_border 1"
+        "match:class ^(linux-wallpaperengine)$, no_shadow 1"
+        "match:class ^(linux-wallpaperengine)$, no_blur 1"
+        "match:class ^(linux-wallpaperengine)$, no_anim 1"
+        "match:class ^(linux-wallpaperengine)$, no_focus 1"
+        "match:class ^(linux-wallpaperengine)$, immediate 1"
       ];
-
       general = {
         gaps_in = 5;
         gaps_out = 20;
