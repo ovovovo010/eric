@@ -17,7 +17,7 @@ in {
 
     # 增加插件管理支援
     plugins = [
-      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprland-plugins
+      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
     settings = {
