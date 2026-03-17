@@ -81,31 +81,29 @@ in {
       animations = {
         enabled = "yes";
         bezier = [
-          # ⚡ 彈簧物理引擎曲線
-          "spring, 0.34, 0.16, 0.72, 1.0" # 標準彈簧
-          "springOvershoot, 0.34, 0.02, 0.72, 1.2" # 超調彈簧
-          "springMove, 0.4, 0.12, 0.66, 1.0" # 移動彈簧
-          "snappy, 0.25, 0.46, 0.45, 0.94" # 快速彈性
-          "bounce, 0.175, 0.885, 0.32, 1.275" # 明顯彈跳
+          # ⚡ 極致清脆彈簧（大幅加速）
+          "ultraSpring, 0.22, 0.32, 0.58, 1.3" # 超快彈簧 + 明顯超調
+          "snapBounce, 0.15, 0.85, 0.35, 1.45" # 瞬間彈跳
+          "quickSpring, 0.28, 0.18, 0.62, 1.1" # 快速回彈
+          "sharpMove, 0.18, 0.52, 0.42, 0.98" # 銳利拖拽
+          "microBounce, 0.12, 1.1, 0.25, 1.2" # 微調彈跳
         ];
         animation = [
-          # 視窗進入：彈簧 popin + 超調
-          "windowsIn, 1, 6, springOvershoot, popin 85%"
-          # 視窗移動：清脆彈簧拖拽
-          "windowsMove, 1, 8, springMove"
-          # 視窗一般：snappy 彈性
-          "windows, 1, 5, snappy"
-          # 視窗退出：彈簧縮回
-          "windowsOut, 1, 4, spring, slide 10% popin 90%"
-          # 淡入淡出：彈簧節奏
-          "fadeIn, 1, 3, spring"
-          "fadeOut, 1, 2, snappy"
-          "fade, 1, 4, springMove"
-          # UI 元素跟隨彈簧
-          "border, 1, 5, bounce"
-          "layersIn, 1, 6, springOvershoot"
-          "workspaces, 1, 5, spring"
-          "workspacesIn, 1, 7, bounce"
+          # 視窗進入：極速彈入 + 大超調
+          "windowsIn, 1, 4, ultraSpring, popin 80%"
+          # 視窗移動：超快拖拽反饋
+          "windowsMove, 1, 6, sharpMove"
+          # 視窗一般：snappy 微彈
+          "windows, 1, 3, snapBounce"
+          # 視窗退出：快速彈縮
+          "windowsOut, 1, 3, quickSpring, slide 8% popin 85%"
+          # 淡入淡出：極速
+          "fadeIn, 1, 2, ultraSpring"
+          "fadeOut, 1, 1.5, snapBounce"
+          # UI：明顯彈簧反饋
+          "border, 1, 4, microBounce"
+          "layersIn, 1, 4, ultraSpring"
+          "workspaces, 1, 3, snapBounce"
         ];
       };
 
