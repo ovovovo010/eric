@@ -47,9 +47,6 @@ in {
         "match:class ^(linux-wallpaperengine)$, immediate on"
       ];
       plugin = {
-        wobbly = {
-          enabled = true;
-        };
       };
       general = {
         gaps_in = 5;
@@ -85,25 +82,30 @@ in {
       animations = {
         enabled = "yes";
         bezier = [
-          "crispBounce, 0.175, 0.885, 0.32, 1.275"
-          "snappyPop, 0.34, 1.56, 0.64, 1.0"
-          "sharpDrag, 0.25, 0.46, 0.45, 0.94"
-          "quickEase, 0.4, 0, 0.2, 1"
+          # 經典 wobbly 曲線 - 果凍晃動
+          "wobbly, 0.36, 0, 0.66, -0.56"
+          "wobblyOvershoot, 0.36, 0, 0.86, -0.56"
+          "wobblyMove, 0.55, 0.085, 0.72, 0.26"
+          "smoothWobble, 0.4, 0, 0.8, 0"
+          "gentleDrag, 0.25, 0.1, 0.25, 1"
         ];
         animation = [
-          "windows, 1, 5, crispBounce"
-          "windowsIn, 1, 6, snappyPop, popin 85%"
-          "windowsOut, 1, 3, quickEase, popin 90%"
-          "windowsMove, 1, 4, sharpDrag"
-          "fadeIn, 1, 3, snappyPop"
-          "fadeOut, 1, 2.5, quickEase"
-          "fade, 1, 3, quickEase"
-          "border, 1, 4, crispBounce"
-          "layers, 1, 4, crispBounce"
-          "layersIn, 1, 5, snappyPop"
-          "workspaces, 1, 5, crispBounce"
-          "workspacesIn, 1, 6, snappyPop"
-          "workspacesOut, 1, 4, quickEase"
+          # 視窗進入：果凍彈入
+          "windowsIn, 1, 8, wobblyOvershoot, popin 80%"
+          # 視窗移動：wobbly 拖拽
+          "windowsMove, 1, 12, wobblyMove"
+          # 視窗一般動畫：輕微晃動
+          "windows, 1, 7, wobbly"
+          # 視窗退出：果凍縮回
+          "windowsOut, 1, 6, smoothWobble, slide 15% popin 85%"
+          # 淡入淡出優化
+          "fadeIn, 1, 4, wobbly"
+          "fadeOut, 1, 3, smoothWobble"
+          "fade, 1, 4, gentleDrag"
+          # 邊框與圖層跟隨 wobbly
+          "border, 1, 6, wobbly"
+          "layersIn, 1, 7, wobblyOvershoot"
+          "workspaces, 1, 6, wobbly"
         ];
       };
 
@@ -179,6 +181,8 @@ in {
       bindm = [
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
+        # 新增：拖拽時加強 wobbly
+        "$mainMod, mouse:272, exec, hyprctl keyword animations:windowsMove:curve wobblyMove"
       ];
     };
   };
