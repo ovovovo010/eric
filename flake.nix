@@ -44,11 +44,6 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    niri-nix = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -82,7 +77,6 @@
             inputs.spicetify-nix.homeManagerModules.default
             nixvim.homeModules.nixvim
             inputs.noctalia.homeModules.default
-            inputs.niri-nix.homeModules.niri
             inputs.simple-wallpaper-engine.homeManagerModules.default
             inputs.hyprland.homeManagerModules.default
             ({pkgs, ...}: {

@@ -6,7 +6,6 @@
   imports = [
     ./home/packages/packages.nix
     ./home/hyprland/hyprland.nix
-    ./home/niri/niri.nix
     ./home/hypragent/hypragent.nix
     ./home/noctalia/noctalia-shell.nix
     ./home/simple-wallpaper-engine/simple-wallpaper-engine.nix
