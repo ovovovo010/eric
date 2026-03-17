@@ -81,30 +81,31 @@ in {
       animations = {
         enabled = "yes";
         bezier = [
-          # 經典 wobbly 曲線 - 果凍晃動
-          "wobbly, 0.36, 0, 0.66, -0.56"
-          "wobblyOvershoot, 0.36, 0, 0.86, -0.56"
-          "wobblyMove, 0.55, 0.085, 0.72, 0.26"
-          "smoothWobble, 0.4, 0, 0.8, 0"
-          "gentleDrag, 0.25, 0.1, 0.25, 1"
+          # ⚡ 彈簧物理引擎曲線
+          "spring, 0.34, 0.16, 0.72, 1.0" # 標準彈簧
+          "springOvershoot, 0.34, 0.02, 0.72, 1.2" # 超調彈簧
+          "springMove, 0.4, 0.12, 0.66, 1.0" # 移動彈簧
+          "snappy, 0.25, 0.46, 0.45, 0.94" # 快速彈性
+          "bounce, 0.175, 0.885, 0.32, 1.275" # 明顯彈跳
         ];
         animation = [
-          # 視窗進入：果凍彈入
-          "windowsIn, 1, 8, wobblyOvershoot, popin 95%"
-          # 視窗移動：wobbly 拖拽
-          "windowsMove, 1, 12, wobblyMove"
-          # 視窗一般動畫：輕微晃動
-          "windows, 5, 21, wobbly"
-          # 視窗退出：果凍縮回
-          "windowsOut, 5, 21, smoothWobble, slide 15% popin 85%"
-          # 淡入淡出優化
-          "fadeIn, 1, 4, wobbly"
-          "fadeOut, 1, 3, smoothWobble"
-          "fade, 1, 4, gentleDrag"
-          # 邊框與圖層跟隨 wobbly
-          "border, 1, 6, wobbly"
-          "layersIn, 1, 7, wobblyOvershoot"
-          "workspaces, 1, 6, wobbly"
+          # 視窗進入：彈簧 popin + 超調
+          "windowsIn, 1, 6, springOvershoot, popin 85%"
+          # 視窗移動：清脆彈簧拖拽
+          "windowsMove, 1, 8, springMove"
+          # 視窗一般：snappy 彈性
+          "windows, 1, 5, snappy"
+          # 視窗退出：彈簧縮回
+          "windowsOut, 1, 4, spring, slide 10% popin 90%"
+          # 淡入淡出：彈簧節奏
+          "fadeIn, 1, 3, spring"
+          "fadeOut, 1, 2, snappy"
+          "fade, 1, 4, springMove"
+          # UI 元素跟隨彈簧
+          "border, 1, 5, bounce"
+          "layersIn, 1, 6, springOvershoot"
+          "workspaces, 1, 5, spring"
+          "workspacesIn, 1, 7, bounce"
         ];
       };
 
