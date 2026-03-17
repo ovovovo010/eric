@@ -17,8 +17,6 @@ in {
 
     # 增加插件管理支援
     plugins = [
-      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
-      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
     ];
 
     settings = {
@@ -48,17 +46,6 @@ in {
         "match:class ^(linux-wallpaperengine)$, immediate on"
       ];
       plugin = {
-        hyprexpo = {
-          columns = 4;
-          gap_size = 15;
-          bg_col = "rgba(000000aa)";
-          workspace_method = "center current";
-        };
-        hyprbars = {
-          bar_height = 20;
-          col.text = "rgba(ffffffdd)";
-          col.background = "rgba(1a1b26aa)";
-        };
       };
       general = {
         gaps_in = 5;
