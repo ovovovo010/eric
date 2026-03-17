@@ -180,8 +180,6 @@ in {
       bindm = [
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
-        # 新增：拖拽時加強 wobbly
-        "$mainMod, mouse:272, exec, hyprctl keyword animations:windowsMove:curve wobblyMove"
       ];
     };
   };
