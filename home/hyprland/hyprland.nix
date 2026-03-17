@@ -17,6 +17,9 @@ in {
 
     # 增加插件管理支援
     plugins = [
+      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
+      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprtrails
+      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
     ];
 
     settings = {
@@ -46,6 +49,17 @@ in {
         "match:class ^(linux-wallpaperengine)$, immediate on"
       ];
       plugin = {
+        hyprexpo = {
+          columns = 4;
+          gap_size = 15;
+          bg_col = "rgba(000000aa)";
+          workspace_method = "center current";
+        };
+        hyprbars = {
+          bar_height = 20;
+          col.text = "rgba(ffffffdd)";
+          col.background = "rgba(1a1b26aa)";
+        };
       };
       general = {
         gaps_in = 5;
@@ -90,13 +104,13 @@ in {
         ];
         animation = [
           # 視窗進入：果凍彈入
-          "windowsIn, 1, 8, wobblyOvershoot, popin 80%"
+          "windowsIn, 1, 8, wobblyOvershoot, popin 95%"
           # 視窗移動：wobbly 拖拽
           "windowsMove, 1, 12, wobblyMove"
           # 視窗一般動畫：輕微晃動
-          "windows, 1, 7, wobbly"
+          "windows, 5, 21, wobbly"
           # 視窗退出：果凍縮回
-          "windowsOut, 1, 6, smoothWobble, slide 15% popin 85%"
+          "windowsOut, 5, 21, smoothWobble, slide 15% popin 85%"
           # 淡入淡出優化
           "fadeIn, 1, 4, wobbly"
           "fadeOut, 1, 3, smoothWobble"
