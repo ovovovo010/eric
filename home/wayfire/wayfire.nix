@@ -29,7 +29,7 @@
 in {
   home.file.".config/wayfire.ini".text = ''
     [core]
-    plugins = alpha animate autostart command cube decoration expo fast-switcher fisheye foreign-toplevel grid gtk-shell idle invert move oswitch place resize session-lock shortcuts-inhibit switcher vswitch wayfire-shell window-rules wm-actions wobbly wrot zoom simple-tile
+    plugins = alpha animate autostart command cube decoration expo fast-switcher fisheye foreign-toplevel grid gtk-shell idle invert move oswitch place resize session-lock shortcuts-inhibit switcher vswitch  window-rules wm-actions wobbly wrot zoom simple-tile
     preferred_decoration_mode = client
     vwidth = 10
     vheight = 1
