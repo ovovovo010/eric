@@ -46,9 +46,9 @@ in {
         "match:class ^(linux-wallpaperengine)$, no_focus on"
         "match:class ^(linux-wallpaperengine)$, immediate on"
       ];
-      "plugin:wobbly" = {
-        sensitivity = 25;
-        border_wobbly = "yes";
+      plugin = {
+        wobbly = {
+        };
       };
       general = {
         gaps_in = 5;
