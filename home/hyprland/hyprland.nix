@@ -41,12 +41,12 @@ in {
         "match:class ^(linux-wallpaperengine)$, pin 1"
         "match:class ^(linux-wallpaperengine)$, size 100% 100%"
         "match:class ^(linux-wallpaperengine)$, move 0 0"
-        "match:class ^(linux-wallpaperengine)$, no_border 1"
-        "match:class ^(linux-wallpaperengine)$, no_shadow 1"
-        "match:class ^(linux-wallpaperengine)$, no_blur 1"
-        "match:class ^(linux-wallpaperengine)$, no_anim 1"
-        "match:class ^(linux-wallpaperengine)$, no_focus 1"
-        "match:class ^(linux-wallpaperengine)$, immediate 1"
+        "noborder, ^(linux-wallpaperengine)$" # 修正這裡
+        "noshadow, ^(linux-wallpaperengine)$" # 修正這裡
+        "noblur, ^(linux-wallpaperengine)$" # 修正這裡
+        "noanim, ^(linux-wallpaperengine)$" # 修正這裡
+        "nofocus, ^(linux-wallpaperengine)$" # 修正這裡
+        "immediate, ^(linux-wallpaperengine)$"
       ];
       general = {
         gaps_in = 5;
