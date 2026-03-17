@@ -17,7 +17,7 @@ in {
 
     # 增加插件管理支援
     plugins = [
-      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.wobbly
+      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprland-plugins
     ];
 
     settings = {
@@ -48,6 +48,7 @@ in {
       ];
       plugin = {
         wobbly = {
+          enabled = true;
         };
       };
       general = {
