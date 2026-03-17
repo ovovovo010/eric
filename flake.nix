@@ -84,7 +84,7 @@
             inputs.noctalia.homeModules.default
             inputs.niri-nix.homeModules.niri
             inputs.simple-wallpaper-engine.homeManagerModules.default
-            inputs.hyprland.homeManagerModules.hyprland
+            inputs.hyprland.homeManagerModules.default
             ({pkgs, ...}: {
               home.packages = [
                 inputs.antigravity-nix.packages.x86_64-linux.default
