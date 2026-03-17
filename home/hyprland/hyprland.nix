@@ -17,8 +17,7 @@ in {
 
     # 增加插件管理支援
     plugins = [
-      # 於 Flakes 環境下，可直接透過 inputs 引入插件套件
-      # 範例：inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprscrolling
+      inputs.hyprland-plugins.packages.${pkgs.system}.wobbly
     ];
 
     settings = {
@@ -47,6 +46,10 @@ in {
         "match:class ^(linux-wallpaperengine)$, no_focus on"
         "match:class ^(linux-wallpaperengine)$, immediate on"
       ];
+      "plugin:wobbly" = {
+        sensitivity = 25;
+        border_wobbly = "yes";
+      };
       general = {
         gaps_in = 5;
         gaps_out = 20;
