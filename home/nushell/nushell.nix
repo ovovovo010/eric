@@ -4,16 +4,19 @@
   programs.nushell = {
     enable = true;
 
-    # ── 插件 ────────────────────────────────────────────────────
+    # ── 插件 ─────────────────────────────────────────────────────────────────
+    # 原則：只加 nixpkgs 裡與當前 nushell 版本同步編譯的 plugin
+    # highlight 暫時移除（nixpkgs unstable 跳版 0.111.0 時尚未重新編譯）
+    # 待 nixpkgs 跟上後在此補回：nushellPlugins.highlight
     plugins = with pkgs.nushellPlugins; [
-      formats
-      query
-      highlight
-      polars
-      hcl
-      semver
+      formats   # CSV / JSON / TOML / YAML 格式轉換
+      query     # JSON / XML / web 查詢
+      polars    # DataFrame 操作
+      hcl       # HCL 格式支援
+      semver    # 語意版本比較
     ];
 
+    # ── 主設定 ────────────────────────────────────────────────────────────────
     configFile.text = ''
       $env.config = {
         show_banner:   false
@@ -160,6 +163,7 @@
       }
     '';
 
+    # ── 環境變數 ──────────────────────────────────────────────────────────────
     envFile.text = ''
       $env.EDITOR = "nvim"
       $env.VISUAL = "nvim"
@@ -171,11 +175,13 @@
       atuin init nu | save -f ~/.atuin.nu
     '';
 
+    # ── 額外設定、alias、自訂函數 ─────────────────────────────────────────────
     extraConfig = ''
       source ~/.zoxide.nu
       source ~/.cache/starship/init.nu
       source ~/.atuin.nu
 
+      # ── Alias ──────────────────────────────────────────────────────────────
       alias ll   = eza -la --icons --git --group-directories-first
       alias ls   = eza --icons --group-directories-first
       alias la   = eza -a --icons --group-directories-first
@@ -201,6 +207,7 @@
       alias lg   = lazygit
       alias ng   = /etc/nixos/rebuild.sh
 
+      # ── 自訂函數 ───────────────────────────────────────────────────────────
       def mkcd [dir: string] {
         mkdir $dir
         cd $dir
@@ -212,6 +219,7 @@
     '';
   };
 
+  # ── Carapace 補全 ──────────────────────────────────────────────────────────
   programs.carapace = {
     enable = true;
     enableNushellIntegration = true;
