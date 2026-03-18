@@ -35,13 +35,13 @@
       url = "github:noctalia-dev/noctalia-qs";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    simple-wallpaper-engine = {
-      url = "github:Maxnights/simple-linux-wallpaperengine-gui";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     antigravity-nix = {
       url = "github:jacopone/antigravity-nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+    yazi = {
+      url = "github:sxyazi/yazi";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hyprland = {
@@ -81,7 +81,6 @@
             inputs.spicetify-nix.homeManagerModules.default
             nixvim.homeModules.nixvim
             inputs.noctalia.homeModules.default
-            inputs.simple-wallpaper-engine.homeManagerModules.default
             inputs.hyprland.homeManagerModules.default
             ({pkgs, ...}: {
               home.packages = [

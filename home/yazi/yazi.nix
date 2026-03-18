@@ -1,6 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 let
+  # 用 flake input 的最新版 yazi package
+  yazi-pkg = inputs.yazi.packages.${pkgs.system}.default;
+
   yaziPluginsRepo = pkgs.fetchFromGitHub {
     owner  = "yazi-rs";
     repo   = "plugins";
@@ -34,24 +37,20 @@ in
 {
   programs.yazi = {
     enable = true;
+    package = yazi-pkg; # 用 flake 最新版，解決版本過舊問題
 
-    # ── Plugins ──────────────────────────────────────────────────────────────
     plugins = {
-      # 預覽增強（來自 yazi-rs/plugins monorepo）
-      "hexyl"        = fromMonorepo "hexyl";        # 二進位 hex 預覽
-      "miller"       = fromMonorepo "miller";       # CSV/TSV 預覽
-      "exifaudio"    = fromMonorepo "exifaudio";    # 音樂 metadata
-      "mediainfo"    = fromMonorepo "mediainfo";    # 影音 metadata
-      "git"          = fromMonorepo "git";          # git 狀態標記
-      "jump-to-char" = fromMonorepo "jump-to-char"; # 單鍵跳字元
-
-      # 獨立 repo
-      "bookmarks"    = bookmarksPlugin;             # 持久書籤
-      "fr"           = frPlugin;                    # fzf + ripgrep 搜尋
-      "ouch"         = ouchPlugin;                  # 壓縮 / 解壓
+      "hexyl"        = fromMonorepo "hexyl";
+      "miller"       = fromMonorepo "miller";
+      "exifaudio"    = fromMonorepo "exifaudio";
+      "mediainfo"    = fromMonorepo "mediainfo";
+      "git"          = fromMonorepo "git";          # 新版 yazi 可以用了
+      "jump-to-char" = fromMonorepo "jump-to-char";
+      "bookmarks"    = bookmarksPlugin;
+      "fr"           = frPlugin;
+      "ouch"         = ouchPlugin;
     };
 
-    # ── 初始化 ────────────────────────────────────────────────────────────────
     initLua = ''
       require("git"):setup()
       require("bookmarks"):setup({
@@ -62,21 +61,19 @@ in
       })
     '';
 
-    # ── Keymap ────────────────────────────────────────────────────────────────
     keymap = {
-      manager.prepend_keymap = [
-        { on = ["<C-g>"]; run = "plugin git";           desc = "Toggle git status"; }
-        { on = ["f"];     run = "plugin jump-to-char";  desc = "Jump to char"; }
+      mgr.prepend_keymap = [
+        { on = ["<C-g>"]; run = "plugin git";                     desc = "Toggle git status"; }
+        { on = ["f"];     run = "plugin jump-to-char";            desc = "Jump to char"; }
         { on = ["b" "m"]; run = "plugin bookmarks --args=save";   desc = "Save bookmark"; }
         { on = ["b" "j"]; run = "plugin bookmarks --args=jump";   desc = "Jump to bookmark"; }
         { on = ["b" "d"]; run = "plugin bookmarks --args=delete"; desc = "Delete bookmark"; }
-        { on = ["<C-f>"]; run = "plugin fr";            desc = "fzf ripgrep search"; }
+        { on = ["<C-f>"]; run = "plugin fr";                      desc = "fzf ripgrep search"; }
         { on = ["x"];     run = "plugin ouch --args=extract";     desc = "Extract archive"; }
         { on = ["X"];     run = "plugin ouch --args=compress";    desc = "Compress to archive"; }
       ];
     };
 
-    # ── Settings ──────────────────────────────────────────────────────────────
     settings = {
       opener = {
         edit = [
