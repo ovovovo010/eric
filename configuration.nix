@@ -9,7 +9,6 @@
     ./system/system-boot/systemd-boot.nix
     ./system/plymouth/plymouth.nix
     ./system/fcitx5/fcitx5.nix
-    ./system/nixpak/nixpak.nix
     ./system/btrfs/btrfs.nix
     ./system/boot/boot.nix
     ./system/networking/networking.nix
