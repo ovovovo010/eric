@@ -11,6 +11,8 @@
     nil
     nixd
     nixpkgs-fmt
+    xarchiver
+    ouch
     gh
     tree
     zig
