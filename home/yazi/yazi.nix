@@ -17,7 +17,6 @@
       "bookmarks" = pkgs.yaziPlugins.bookmarks; # 持久書籤
 
       # 搜尋
-      "fg" = pkgs.yaziPlugins.fg; # fzf + ripgrep 全文搜尋
 
       # 壓縮 / 解壓
       "ouch" = pkgs.yaziPlugins.ouch; # ouch 解壓縮整合
