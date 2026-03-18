@@ -42,6 +42,10 @@
       url = "github:sxyazi/yazi";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpak = {
+      url = "github:nixpak/nixpak";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     hyprland = {
       url = "github:hyprwm/Hyprland";
@@ -83,7 +87,7 @@
             inputs.hyprland.homeManagerModules.default
             ({pkgs, ...}: {
               home.packages = [
-                inputs.antigravity-nix.packages.x86_64-linux.default
+                inputs.antigravity-nix.packages.x86_64-linux.google-antigravity-no-fhs
               ];
             })
           ];

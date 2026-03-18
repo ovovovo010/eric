@@ -1,19 +1,10 @@
 # home/nushell/nushell.nix
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.nushell = {
     enable = true;
 
     # ── 插件 ─────────────────────────────────────────────────────────────────
-    # 原則：只加 nixpkgs 裡與當前 nushell 版本同步編譯的 plugin
-    # highlight 暫時移除（nixpkgs unstable 跳版 0.111.0 時尚未重新編譯）
-    # 待 nixpkgs 跟上後在此補回：nushellPlugins.highlight
     plugins = with pkgs.nushellPlugins; [
-      formats   # CSV / JSON / TOML / YAML 格式轉換
-      query     # JSON / XML / web 查詢
-      polars    # DataFrame 操作
-      hcl       # HCL 格式支援
-      semver    # 語意版本比較
     ];
 
     # ── 主設定 ────────────────────────────────────────────────────────────────
