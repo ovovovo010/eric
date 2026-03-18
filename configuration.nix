@@ -11,6 +11,7 @@
     ./system/fcitx5/fcitx5.nix
     ./system/btrfs/btrfs.nix
     ./system/boot/boot.nix
+    ./system/sops/sops.nix
     ./system/networking/networking.nix
     ./system/stylix/blacklist.nix
     ./system/sudo/sudo.nix

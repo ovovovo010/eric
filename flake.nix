@@ -55,6 +55,10 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland"; # 確保版本一致
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -85,6 +89,7 @@
             nixvim.homeModules.nixvim
             inputs.noctalia.homeModules.default
             inputs.hyprland.homeManagerModules.default
+            inputs.sops-nix.nixosModules.sops
             ({pkgs, ...}: {
               home.packages = [
                 inputs.antigravity-nix.packages.x86_64-linux.google-antigravity-no-fhs

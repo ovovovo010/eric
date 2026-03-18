@@ -1,0 +1,6 @@
+creation_rules:
+  - path_regex: secrets/.*\.yaml$
+    key_groups:
+      - pgp:
+        age:
+          - age1... # 你的公鑰（可用 ssh-to-age 轉換你的 SSH 公鑰得到）
