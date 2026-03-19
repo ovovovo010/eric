@@ -38,6 +38,7 @@
 in {
   programs.yazi = {
     enable = true;
+    shellWrapperName = "y";
     package = yazi-pkg; # 用 flake 最新版，解決版本過舊問題
 
     plugins = {

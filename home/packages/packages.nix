@@ -31,7 +31,7 @@
     tokei
     sops
     age
-    nixfmt-rfc-style
+    nixfmt
     nix-output-monitor
     mpvpaper
     nvd

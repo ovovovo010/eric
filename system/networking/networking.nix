@@ -57,13 +57,12 @@
   # ==========================================
   services.resolved = {
     enable = true;
-    dnssec = "true";
-    domains = ["~."];
-    fallbackDns = ["1.1.1.1" "9.9.9.9"]; # 使用 Cloudflare 或 Quad9
     settings = {
       Resolve = {
         DNS = "1.1.1.1";
-        FallbackDNS = "8.8.8.8";
+        FallbackDNS = "1.1.1.1 9.9.9.9 8.8.8.8";
+        DNSSEC = "true";
+        Domains = "~.";
       };
     };
   };

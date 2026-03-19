@@ -15,11 +15,11 @@
 
     # Wayland / X11 橋接與剪貼簿
     xwayland
-    xorg.xhost
+    xhost
     wl-clipboard
     xclip
-    xorg.xinit
-    xorg.xorgserver
+    xinit
+    xorg-server
 
     # Steam / 遊戲相關（runtime / overlay / 調優）
     steam-run
