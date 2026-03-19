@@ -25,17 +25,18 @@ in {
     shellWrapperName = "y";
     package = yazi-pkg;
 
+    # 1. 修正 flavors 的指向路徑
     flavors = {
       catppuccin-mocha = "${yazi-flavors}/flavors/mocha.yazi";
     };
 
+    # 2. 修正 theme 區塊
     theme = {
       flavor = {
         dark = "catppuccin-mocha";
         light = "catppuccin-mocha";
       };
     };
-
     settings = {
       opener = {
         edit = [
