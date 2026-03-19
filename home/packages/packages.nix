@@ -29,6 +29,8 @@
     linux-wallpaperengine
     bandwhich
     tokei
+    sops
+    age
     nixfmt-rfc-style
     nix-output-monitor
     mpvpaper
