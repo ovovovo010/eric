@@ -3,24 +3,22 @@
   inputs,
   ...
 }: let
-  # 用 flake input 的最新版 yazi package
   yazi-pkg = inputs.yazi.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
   yaziPluginsRepo = pkgs.fetchFromGitHub {
     owner = "yazi-rs";
     repo = "plugins";
-    rev = "196281844b8cbcac658a59013e4805300c2d6126";
-    sha256 = "sha256-pAkBlodci4Yf+CTjhGuNtgLOTMNquty7xP0/HSeoLzE=";
+    rev = "main";
+    hash = pkgs.lib.fakeHash;
   };
 
   fromMonorepo = name: "${yaziPluginsRepo}/${name}.yazi";
 
-  # Catppuccin Yazi Flavors
   yazi-flavors = pkgs.fetchFromGitHub {
     owner = "catppuccin";
     repo = "yazi";
-    rev = "31968840a1b643779e54d8ec68b3d686f0c69d80";
-    hash = "sha256-R4F1pIs7V0+xU8tU7XlK/zXW4u6E9U8O5/f0aGv8E9U=";
+    rev = "main";
+    hash = pkgs.lib.fakeHash;
   };
 in {
   programs.yazi = {
@@ -28,16 +26,18 @@ in {
     shellWrapperName = "y";
     package = yazi-pkg;
 
-    # 1. 使用 Catppuccin Macchiato Flavor (包含資料夾配色)
     flavors = {
-      catppuccin-macchiato = "${yazi-flavors}/flavors/macchiato.yazi";
+      catppuccin-mocha = "${yazi-flavors}/flavors/mocha.yazi";
     };
 
-    # 2. 設定使用該 Flavor
-    settings = {
+    theme = {
       flavor = {
-        use = "catppuccin-macchiato";
+        dark = "catppuccin-mocha";
+        light = "catppuccin-mocha";
       };
+    };
+
+    settings = {
       opener = {
         edit = [
           {
@@ -59,7 +59,6 @@ in {
       };
     };
 
-    # 3. 插件配置 (使用 Home Manager 自帶的管理機制)
     plugins = {
       "hexyl" = fromMonorepo "hexyl";
       "miller" = fromMonorepo "miller";
@@ -70,20 +69,20 @@ in {
       "bookmarks" = pkgs.fetchFromGitHub {
         owner = "dedukun";
         repo = "bookmarks.yazi";
-        rev = "9ef1254d8afe88aba21cd56a186f4485dd532ab8";
-        sha256 = "sha256-GQFBRB2aQqmmuKZ0BpcCAC4r0JFKqIANZNhUC98SlwY=";
+        rev = "main";
+        hash = pkgs.lib.fakeHash;
       };
       "fr" = pkgs.fetchFromGitHub {
         owner = "lpnh";
         repo = "fr.yazi";
-        rev = "aa88cd4d4345c07345275291c1a236343f834c86";
-        sha256 = "sha256-3D1mIQpEDik0ppPQo+/NIhCxEu/XEnJMJ0HiAFxlOE4=";
+        rev = "main";
+        hash = pkgs.lib.fakeHash;
       };
       "ouch" = pkgs.fetchFromGitHub {
         owner = "ndtoan96";
         repo = "ouch.yazi";
-        rev = "406ce6c13ec3a18d4872b8f64b62f4a530759b2c";
-        sha256 = "sha256-14x/bD0aD9hXONaqQD8Dt7rLBCMq7bkVLH6uCPOQ0C8=";
+        rev = "main";
+        hash = pkgs.lib.fakeHash;
       };
     };
 
