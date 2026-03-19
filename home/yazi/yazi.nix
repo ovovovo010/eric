@@ -70,7 +70,7 @@ in {
         owner = "dedukun";
         repo = "bookmarks.yazi";
         rev = "main";
-        hash = pkgs.lib.fakeHash;
+        hash = "sha256-GQFBRB2aQqmmuKZ0BpcCAC4r0JFKqIANZNhUC98SlwY=";
       };
       "fr" = pkgs.fetchFromGitHub {
         owner = "lpnh";
