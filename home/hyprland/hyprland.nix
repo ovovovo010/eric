@@ -25,7 +25,7 @@ in {
 
       "$terminal" = "ghostty";
       "$fileManager" = "ghostty -e yazi";
-      "$menu" = "rofi -show drun";
+      "$menu" = "noctalia-shell ipc call launcher toggle";
 
       "exec-once" = [
         "fcitx5 -d"
