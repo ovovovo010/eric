@@ -9,9 +9,8 @@
     owner = "yazi-rs";
     repo = "plugins";
     rev = "main";
-    hash = pkgs.lib.fakeHash;
+    hash = "sha256-pAkBlodci4Yf+CTjhGuNtgLOTMNquty7xP0/HSeoLzE=";
   };
-
   fromMonorepo = name: "${yaziPluginsRepo}/${name}.yazi";
 
   yazi-flavors = pkgs.fetchFromGitHub {
