@@ -3,6 +3,7 @@
   inputs,
   ...
 }: let
+  # 1. 核心套件與插件來源定義
   yazi-pkg = inputs.yazi.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
   yaziPluginsRepo = pkgs.fetchFromGitHub {
@@ -11,6 +12,7 @@
     rev = "main";
     hash = "sha256-pAkBlodci4Yf+CTjhGuNtgLOTMNquty7xP0/HSeoLzE=";
   };
+
   fromMonorepo = name: "${yaziPluginsRepo}/${name}.yazi";
 
   yazi-flavors = pkgs.fetchFromGitHub {
@@ -20,23 +22,22 @@
     hash = "sha256-Og33IGS9pTim6LEH33CO102wpGnPomiperFbqfgrJjw=";
   };
 in {
+  # 2. 強制建立主題軟連結 (解決 os error 2 關鍵)
+  xdg.configFile."yazi/flavors/catppuccin-mocha.yazi".source = "${yazi-flavors}/flavors/mocha.yazi";
+
   programs.yazi = {
     enable = true;
     shellWrapperName = "y";
     package = yazi-pkg;
 
-    # 1. 修正 flavors 的指向路徑
-    flavors = {
-      catppuccin-mocha = "${yazi-flavors}/flavors/mocha.yazi";
-    };
-
-    # 2. 修正 theme 區塊
+    # 3. 配色主題設定
     theme = {
       flavor = {
-        dark = "catppuccin-mocha";
-        light = "catppuccin-mocha";
+        use = "catppuccin-mocha";
       };
     };
+
+    # 4. 基礎設定 (開啟工具與預覽)
     settings = {
       opener = {
         edit = [
@@ -59,6 +60,7 @@ in {
       };
     };
 
+    # 5. 插件配置 (使用最新 Hash)
     plugins = {
       "hexyl" = fromMonorepo "hexyl";
       "miller" = fromMonorepo "miller";
@@ -86,6 +88,7 @@ in {
       };
     };
 
+    # 6. Lua 初始化
     initLua = ''
       require("git"):setup()
       require("bookmarks"):setup({
@@ -96,6 +99,7 @@ in {
       })
     '';
 
+    # 7. 按鍵綁定
     keymap = {
       mgr.prepend_keymap = [
         {
