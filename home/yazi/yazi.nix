@@ -76,7 +76,7 @@ in {
         owner = "lpnh";
         repo = "fr.yazi";
         rev = "main";
-        hash = pkgs.lib.fakeHash;
+        hash = "sha256-3D1mIQpEDik0ppPQo+/NIhCxEu/XEnJMJ0HiAFxlOE4=";
       };
       "ouch" = pkgs.fetchFromGitHub {
         owner = "ndtoan96";
