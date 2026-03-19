@@ -82,7 +82,7 @@ in {
         owner = "ndtoan96";
         repo = "ouch.yazi";
         rev = "main";
-        hash = pkgs.lib.fakeHash;
+        hash = "sha256-14x/bD0aD9hXONaqQD8Dt7rLBCMq7bkVLH6uCPOQ0C8=";
       };
     };
 
