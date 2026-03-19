@@ -7,3 +7,8 @@ id_rsa
 .env
 *.secret
 
+# 忽略測試文件
+test
+
+# 忽略參考倉庫
+nix-config

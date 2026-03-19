@@ -23,6 +23,7 @@
     jq
     fd
     dust
+    yt-dlp
     duf
     curlie
     google-chrome
