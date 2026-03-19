@@ -60,8 +60,11 @@
     dnssec = "true";
     domains = ["~."];
     fallbackDns = ["1.1.1.1" "9.9.9.9"]; # 使用 Cloudflare 或 Quad9
-    extraConfig = ''
-      DNSOverTLS=yes
-    '';
+    settings = {
+      Network = {
+        DNS = "1.1.1.1";
+        FallbackDNS = "8.8.8.8";
+      };
+    };
   };
 }
