@@ -67,6 +67,7 @@
     home-manager,
     nix-flatpak,
     nixvim,
+    sops-nix
     ...
   } @ inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
@@ -74,7 +75,8 @@
       modules = [
         {nixpkgs.hostPlatform = "x86_64-linux";}
         ./configuration.nix
-        inputs.sops-nix.nixosModules.sops
+          inputs.sops-nix.nixosModules.sops
+          ./system/sops/sops.nix
         inputs.disko.nixosModules.disko
         ./disko.nix
         nix-flatpak.nixosModules.nix-flatpak
