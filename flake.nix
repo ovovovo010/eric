@@ -74,6 +74,7 @@
       modules = [
         {nixpkgs.hostPlatform = "x86_64-linux";}
         ./configuration.nix
+        inputs.sops-nix.nixosModules.sops
         inputs.disko.nixosModules.disko
         ./disko.nix
         nix-flatpak.nixosModules.nix-flatpak
@@ -89,7 +90,6 @@
             nixvim.homeModules.nixvim
             inputs.noctalia.homeModules.default
             inputs.hyprland.homeManagerModules.default
-            inputs.sops-nix.nixosModules.sops
             ({pkgs, ...}: {
               home.packages = [
                 inputs.antigravity-nix.packages.x86_64-linux.google-antigravity-no-fhs
