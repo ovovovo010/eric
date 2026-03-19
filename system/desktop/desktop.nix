@@ -1,11 +1,9 @@
 {pkgs, ...}: {
   services.xserver = {
     enable = true;
-    windowManager.i3 = {
+    windowManager.qtile = {
       enable = true;
-    };
-    windowManager.bspwm = {
-      enable = true;
+      backend = "wayland";
     };
   };
   programs.hyprland = {
