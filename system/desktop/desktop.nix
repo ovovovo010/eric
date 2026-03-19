@@ -3,7 +3,6 @@
     enable = true;
     windowManager.qtile = {
       enable = true;
-      backend = "wayland";
     };
   };
   programs.hyprland = {
