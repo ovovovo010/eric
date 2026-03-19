@@ -1,6 +1,5 @@
 creation_rules:
-  - path_regex: secrets/.*\.yaml$
+  - path_regex: .*secrets\/.*\.yaml$
     key_groups:
-      - pgp:
-        age:
-          - age1... # 你的公鑰（可用 ssh-to-age 轉換你的 SSH 公鑰得到）
+      - age:
+          - "age15ktd5x8kax2rw6n9yhrqs5snzu7gnfcz9gpyvvcdc65lgaaeefrql8mgxa"
