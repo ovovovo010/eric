@@ -18,7 +18,7 @@
     owner = "catppuccin";
     repo = "yazi";
     rev = "main";
-    hash = pkgs.lib.fakeHash;
+    hash = "sha256-Og33IGS9pTim6LEH33CO102wpGnPomiperFbqfgrJjw=";
   };
 in {
   programs.yazi = {
