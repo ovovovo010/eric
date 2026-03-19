@@ -26,6 +26,7 @@
     ./home/stylix/stylix.nix
     ./home/stylix/blacklist.nix
     ./home/mpv/mpv.nix
+    ./home/nixd/nixd.nix
   ];
 
   home.username = "eric";

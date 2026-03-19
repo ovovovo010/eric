@@ -109,7 +109,23 @@
         enable = true;
         servers = {
           lua_ls.enable  = true;
-          nil_ls.enable  = true;
+          nil_ls.enable  = false;
+          nixd = {
+            enable = true;
+            settings = {
+              nixpkgs = {
+                expr = "import <nixpkgs> { }";
+              };
+              formatting = {
+                command = [ "alejandra" ];
+              };
+              options = {
+                nixos = {
+                  expr = "(builtins.getFlake \"/home/eric/nixos\").nixosConfigurations.nixos.options";
+                };
+              };
+            };
+          };
           ts_ls.enable   = true;
           pyright.enable   = true;
           ansiblels.enable = false;  # removed from nixpkgs
