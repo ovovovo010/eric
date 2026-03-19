@@ -15,42 +15,76 @@
 
   fromMonorepo = name: "${yaziPluginsRepo}/${name}.yazi";
 
-  bookmarksPlugin = pkgs.fetchFromGitHub {
-    owner = "dedukun";
-    repo = "bookmarks.yazi";
-    rev = "9ef1254d8afe88aba21cd56a186f4485dd532ab8";
-    sha256 = "sha256-GQFBRB2aQqmmuKZ0BpcCAC4r0JFKqIANZNhUC98SlwY=";
-  };
-
-  frPlugin = pkgs.fetchFromGitHub {
-    owner = "lpnh";
-    repo = "fr.yazi";
-    rev = "aa88cd4d4345c07345275291c1a236343f834c86";
-    sha256 = "sha256-3D1mIQpEDik0ppPQo+/NIhCxEu/XEnJMJ0HiAFxlOE4=";
-  };
-
-  ouchPlugin = pkgs.fetchFromGitHub {
-    owner = "ndtoan96";
-    repo = "ouch.yazi";
-    rev = "406ce6c13ec3a18d4872b8f64b62f4a530759b2c";
-    sha256 = "sha256-14x/bD0aD9hXONaqQD8Dt7rLBCMq7bkVLH6uCPOQ0C8=";
+  # Catppuccin Yazi Flavors
+  yazi-flavors = pkgs.fetchFromGitHub {
+    owner = "catppuccin";
+    repo = "yazi";
+    rev = "31968840a1b643779e54d8ec68b3d686f0c69d80";
+    hash = "sha256-R4F1pIs7V0+xU8tU7XlK/zXW4u6E9U8O5/f0aGv8E9U=";
   };
 in {
   programs.yazi = {
     enable = true;
     shellWrapperName = "y";
-    package = yazi-pkg; # 用 flake 最新版，解決版本過舊問題
+    package = yazi-pkg;
 
+    # 1. 使用 Catppuccin Macchiato Flavor (包含資料夾配色)
+    flavors = {
+      catppuccin-macchiato = "${yazi-flavors}/flavors/macchiato.yazi";
+    };
+
+    # 2. 設定使用該 Flavor
+    settings = {
+      flavor = {
+        use = "catppuccin-macchiato";
+      };
+      opener = {
+        edit = [
+          {
+            run = "nvim \"$1\"";
+            desc = "Edit in Neovim";
+            block = true;
+          }
+        ];
+        open = [
+          {
+            run = "xdg-open \"$1\"";
+            desc = "Open with default";
+          }
+        ];
+      };
+      preview = {
+        max_width = 1000;
+        max_height = 1000;
+      };
+    };
+
+    # 3. 插件配置 (使用 Home Manager 自帶的管理機制)
     plugins = {
       "hexyl" = fromMonorepo "hexyl";
       "miller" = fromMonorepo "miller";
       "exifaudio" = fromMonorepo "exifaudio";
       "mediainfo" = fromMonorepo "mediainfo";
-      "git" = fromMonorepo "git"; # 新版 yazi 可以用了
+      "git" = fromMonorepo "git";
       "jump-to-char" = fromMonorepo "jump-to-char";
-      "bookmarks" = bookmarksPlugin;
-      "fr" = frPlugin;
-      "ouch" = ouchPlugin;
+      "bookmarks" = pkgs.fetchFromGitHub {
+        owner = "dedukun";
+        repo = "bookmarks.yazi";
+        rev = "9ef1254d8afe88aba21cd56a186f4485dd532ab8";
+        sha256 = "sha256-GQFBRB2aQqmmuKZ0BpcCAC4r0JFKqIANZNhUC98SlwY=";
+      };
+      "fr" = pkgs.fetchFromGitHub {
+        owner = "lpnh";
+        repo = "fr.yazi";
+        rev = "aa88cd4d4345c07345275291c1a236343f834c86";
+        sha256 = "sha256-3D1mIQpEDik0ppPQo+/NIhCxEu/XEnJMJ0HiAFxlOE4=";
+      };
+      "ouch" = pkgs.fetchFromGitHub {
+        owner = "ndtoan96";
+        repo = "ouch.yazi";
+        rev = "406ce6c13ec3a18d4872b8f64b62f4a530759b2c";
+        sha256 = "sha256-14x/bD0aD9hXONaqQD8Dt7rLBCMq7bkVLH6uCPOQ0C8=";
+      };
     };
 
     initLua = ''
@@ -106,28 +140,6 @@ in {
           desc = "Compress to archive";
         }
       ];
-    };
-
-    settings = {
-      opener = {
-        edit = [
-          {
-            run = "nvim \"$1\"";
-            desc = "Edit in Neovim";
-            block = true;
-          }
-        ];
-        open = [
-          {
-            run = "xdg-open \"$1\"";
-            desc = "Open with default";
-          }
-        ];
-      };
-      preview = {
-        max_width = 1000;
-        max_height = 1000;
-      };
     };
   };
 }
