@@ -15,9 +15,8 @@
     ./home/nushell/starship.nix
     ./home/zen/zen.nix
     ./home/nixvim/nixvim.nix
-    ./home/kitty/kitty.nix
     ./home/zed/zed.nix
-    ./home/wezterm/wezterm.nix
+    ./home/ghostty/ghostty.nix
     ./home/qt/qt.nix
     ./home/gtk/gtk.nix
     ./home/spicetify/spicetify.nix

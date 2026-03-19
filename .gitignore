@@ -1,0 +1,9 @@
+# 忽略所有 SSH 私鑰
+id_ed25519
+id_rsa
+*.pem
+
+# 忽略含有敏感資訊的臨時文件
+.env
+*.secret
+

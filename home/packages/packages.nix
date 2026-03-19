@@ -75,7 +75,6 @@
     protonvpn-gui
 
     # 桌面與 Wayland 工具
-    kitty
     wl-clipboard
     hyprshot
 
