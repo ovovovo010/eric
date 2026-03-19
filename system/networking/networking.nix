@@ -61,7 +61,7 @@
     domains = ["~."];
     fallbackDns = ["1.1.1.1" "9.9.9.9"]; # 使用 Cloudflare 或 Quad9
     settings = {
-      Network = {
+      Resolve = {
         DNS = "1.1.1.1";
         FallbackDNS = "8.8.8.8";
       };
