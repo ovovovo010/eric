@@ -22,7 +22,6 @@
       "user-password" = {
         neededForUsers = true; # 如果是用於使用者登入密碼，設為 true
       };
-      "wifi-password" = {};
     };
   };
 }
